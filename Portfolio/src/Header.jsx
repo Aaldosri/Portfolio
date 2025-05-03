@@ -1,68 +1,106 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 
-export default function Header() {
+export default function Header({ darkMode, setDarkMode }) {
+  function handleDarkMode(e) {
+    setDarkMode(e.target.checked);
+  }
+
   return (
     <>
-      <header class="header sticky top-0 bg-white shadow-md flex items-center justify-between px-1 py-6">
-        <div class="w-3/12 flex justify-end">
+      <header
+        className={`header sticky top-0 ${
+          darkMode ? "bg-white" : "bg-[#1a1a1a]"
+        } shadow-md flex items-center justify-between px-1 py-6`}
+      >
+        <div class="w-3/12 flex justify-end items-center gap-4">
           <div className="wrapper">
-            <input type="checkbox" name="checkbox" className="switch" />
+            <input
+              type="checkbox"
+              name="checkbox"
+              className="switch"
+              onChange={handleDarkMode}
+              checked={darkMode}
+            />
           </div>
 
           <div>
             <Button variant="outlined">EN</Button>
           </div>
         </div>
-        <nav class="nav font-semibold text-lg">
-          <ul class="flex items-center">
-            <li class="relative group p-4 cursor-pointer">
+        <nav
+          className={`nav font-semibold text-lg ${
+            darkMode ? "text-[#1a1a1a]" : "text-white"
+          }`}
+        >
+          <ul className="flex items-center">
+            <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                class="text-green-950 group-hover:text-green-500 transition-colors duration-200"
+                className={`text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  darkMode ? "text-[#1a1a1a]" : "text-white"
+                }`}
               >
                 للتواصل
               </a>
-              <span class="absolute right-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
             </li>
-            <li class="relative group p-4 cursor-pointer">
+
+            <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                class="text-green-950 group-hover:text-green-500 transition-colors duration-200"
+                className={`text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  darkMode ? "text-[#1a1a1a]" : "text-white"
+                }`}
               >
                 المهارات
               </a>
-              <span class="absolute right-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
             </li>
-            <li class="relative group p-4 cursor-pointer">
+
+            <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                class="text-green-950 group-hover:text-green-500 transition-colors duration-200"
+                className={` text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  darkMode ? "text-[#1a1a1a]" : "text-white"
+                }`}
               >
                 المشاريع
               </a>
-              <span class="absolute right-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-500 group-hover:w-full origin-right"></span>
-            </li>{" "}
-            <li class="relative group p-4 cursor-pointer">
+              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
+            </li>
+
+            <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                class="text-green-950 group-hover:text-green-500 transition-colors duration-200"
+                className={` text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  darkMode ? "text-[#1a1a1a]" : "text-white"
+                }`}
               >
                 من انا
               </a>
-              <span class="absolute right-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
             </li>
           </ul>
         </nav>
-        <div class="relative group p-4 cursor-pointer">
+
+        <div className="relative group p-4 cursor-pointer">
           <h1
-            href=""
-            class="text-4xl text-green-950 group-hover:text-green-500 transition-colors duration-200 text-right mr-8"
+            className={`text-4xl relative transition-colors duration-200 text-right mr-8 group-hover:text-[#b33939] ${
+              darkMode ? "text-[#1a1a1a]" : "text-white"
+            }`}
           >
-            {" "}
             عبدالله
+            {/* Top border */}
+            <span className="absolute top-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
+            {/* Bottom border */}
+            <span className="absolute bottom-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500 delay-100"></span>
+            {/* Left border */}
+            <span className="absolute top-0 left-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500 delay-200"></span>
+            {/* Right border */}
+            <span className="absolute top-0 right-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500 delay-300"></span>
           </h1>
-          <span class="absolute right-0 bottom-0 w-0 h-0.5 bg-green-500 transition-all duration-500 group-hover:w-full origin-right mr-4"></span>
         </div>
       </header>
     </>
