@@ -5,6 +5,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Introduce from "./Introduce";
 import Header from "./Header";
+import Me from "./Me";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -22,8 +23,11 @@ function App() {
       <div>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
+      {/* <div className="mx-4 "> */}
+      <Introduce />
 
-      {/* <Introduce /> */}
+      <Me darkMode={darkMode} />
+      {/* </div> */}
     </>
   );
 }

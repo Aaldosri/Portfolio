@@ -29,6 +29,7 @@ export default function Header({ darkMode, setDarkMode }) {
             <Button variant="outlined">EN</Button>
           </div>
         </div>
+
         <nav
           className={`nav font-semibold text-lg ${
             darkMode ? "text-[#1a1a1a]" : "text-white"
@@ -38,7 +39,7 @@ export default function Header({ darkMode, setDarkMode }) {
             <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                className={`text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
@@ -50,7 +51,7 @@ export default function Header({ darkMode, setDarkMode }) {
             <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                className={`text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
@@ -62,7 +63,7 @@ export default function Header({ darkMode, setDarkMode }) {
             <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                className={` text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                className={` text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
@@ -74,7 +75,7 @@ export default function Header({ darkMode, setDarkMode }) {
             <li className="relative group p-4 cursor-pointer">
               <a
                 href=""
-                className={` text-2xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                className={` text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
@@ -87,19 +88,19 @@ export default function Header({ darkMode, setDarkMode }) {
 
         <div className="relative group p-4 cursor-pointer">
           <h1
-            className={`text-4xl relative transition-colors duration-200 text-right mr-8 group-hover:text-[#b33939] ${
+            className={`text-5xl relative transition-colors duration-200 text-right mr-8 group-hover:text-[#b33939] ${
               darkMode ? "text-[#1a1a1a]" : "text-white"
             }`}
           >
             عبدالله
             {/* Top border */}
-            <span className="absolute top-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
+            <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
             {/* Bottom border */}
-            <span className="absolute bottom-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500 delay-100"></span>
+            <span className="absolute bottom-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
             {/* Left border */}
-            <span className="absolute top-0 left-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500 delay-200"></span>
+            <span className="absolute top-0 left-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
             {/* Right border */}
-            <span className="absolute top-0 right-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500 delay-300"></span>
+            <span className="absolute top-0 right-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
           </h1>
         </div>
       </header>
