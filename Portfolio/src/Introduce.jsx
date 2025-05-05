@@ -1,10 +1,11 @@
 import React from "react";
 import img from "./img/pc.png";
+import img2 from "./img/Me.png";
 export default function Introduce() {
   return (
     <>
       <section
-        className="flex flex-col md:flex-row justify-around items-start mt-10  h-[600px]"
+        className="flex flex-col md:flex-row justify-around items-start mt-10  min-h-[600px]"
         dir="rtl"
       >
         <div className="flex gap-8">
@@ -36,8 +37,12 @@ export default function Introduce() {
         </div>
 
         <div className="flex gap-8">
-          <div>
-            <img src={img} className="w-100 h-100 object-cover " alt="صورة" />
+          <div className="w-[500px] h-[500px] overflow-hidden rounded-xl shadow-md">
+            <img
+              src={img2}
+              alt="صورة"
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            />
           </div>
         </div>
       </section>
