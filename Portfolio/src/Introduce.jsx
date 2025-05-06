@@ -5,16 +5,17 @@ export default function Introduce() {
   return (
     <>
       <section
-        className="flex flex-col md:flex-row justify-around items-start mt-10  min-h-[600px]"
+        className="flex flex-col md:flex-row  justify-center gap-50 items-start mt-10 min-h-[600px]"
         dir="rtl"
       >
         <div className="flex gap-8">
           <div style={{ fontFamily: "TajawalBold" }}>
             <h1 className="text-5xl text-[#b33939] m-5">أهلا !</h1>
-            <h1 className="text-5xl text-[#b33939] m-5">انا عبدالله الدوسري</h1>
-            <h1 className="text-3xl text-[#b33939] m-5 mt-10">
+            <h1 className="text-5xl text-[#b33939] m-5">أنا عبدالله الدوسري</h1>
+            <h1 className="text-2xl text-[#b33939] m-5 mt-10">
               مطور ويب قادر انه يساعدك ببناء المواقع بشكل احترافي
             </h1>
+            {/* <h1 className="text-2xl text-[#b33939] m-5 mt-0">بشكل احترافي</h1> */}
             <div className="flex gap-8 mt-15 m-5">
               <a
                 href="https://www.linkedin.com/in/yourusername"

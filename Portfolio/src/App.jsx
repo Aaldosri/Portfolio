@@ -27,7 +27,7 @@ function App() {
       {/* <div className="mx-4 "> */}
       <Introduce />
 
-      <Me darkMode={darkMode} />
+      {/* <Me darkMode={darkMode} /> */}
       {/* </div> */}
 
       <div>

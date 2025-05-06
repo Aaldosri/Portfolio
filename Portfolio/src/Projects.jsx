@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import img2 from "./img/Me.png";
 
 // External Libraries
 import Card from "@mui/material/Card";
@@ -10,7 +11,7 @@ import { Grid } from "@mui/material";
 const projects = [
   {
     title: "مشروع 1",
-    image: "https://via.placeholder.com/400x200",
+    image: img2,
     site: "https://example.com",
     github: "https://github.com",
   },
@@ -36,50 +37,54 @@ const projects = [
 
 export default function Projects({ darkMode }) {
   return (
-    <>
-      <section className="min-h-[600px] text-center mt-50">
-        <div className="relative inline-block group text-center mb-20">
-          <h1
-            className="text-4xl mb-5 text-center text-[#b33939]"
-            style={{ fontFamily: "TajawalBold" }}
-          >
-            المشاريع
-            <span className="absolute bottom-0 left-0 right-0 border-b-2 border-[#b33939]"></span>
-          </h1>
-        </div>
+    <section className="min-h-[600px] text-center mt-20">
+      <div className="relative inline-block group text-center mb-20">
+        <h1
+          className="text-4xl mb-5 text-center text-[#b33939]"
+          style={{ fontFamily: "TajawalBold" }}
+        >
+          المشاريع
+          <span className="absolute bottom-0 left-0 right-0 border-b-2 border-[#b33939]"></span>
+        </h1>
+      </div>
 
-        <div>
-          <Grid container spacing={4} justifyContent="center">
-            {[1, 2, 3, 4].map((item) => (
-              <Grid item xs={12} sm={6} md={6} key={item}>
-                <Card sx={{ maxWidth: 345, margin: "auto" }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image="/static/images/cards/contemplative-reptile.jpg"
-                      alt="green iguana"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        Lizard {item}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "text.secondary" }}
-                      >
-                        Lizards are a widespread group of squamate reptiles,
-                        with over 6,000 species, ranging across all continents
-                        except Antarctica.
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </section>
-    </>
+      {/* المشاريع */}
+      <div className="flex flex-col gap-20 items-center">
+        {projects.map((project, index) => (
+          <div key={index} className="relative w-[500px] h-[300px]">
+            {/* صورة المشروع */}
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover rounded-xl shadow-lg"
+            />
+
+            {/* الكرت اللي على اليمين */}
+            <div className="absolute -right-28 top-1/2 -translate-y-1/2 bg-white p-6 rounded-xl shadow-2xl w-64">
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-gray-600 mb-4 text-sm">
+                وصف مختصر عن المشروع والتقنيات المستخدمة فيه.
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href={project.site}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm"
+                  target="_blank"
+                >
+                  زيارة الموقع
+                </a>
+                <a
+                  href={project.github}
+                  className="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition text-sm"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
