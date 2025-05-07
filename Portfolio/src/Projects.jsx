@@ -51,16 +51,29 @@ export default function Projects({ darkMode }) {
       {/* المشاريع */}
       <div className="flex flex-col gap-20 items-center">
         {projects.map((project, index) => (
-          <div key={index} className="relative w-[500px] h-[300px]">
-            {/* صورة المشروع */}
+          <div key={index} className="relative w-[700px] h-[500px]">
+            {/* صورة المشروع مع تحريكها لليسار أو اليمين أكثر */}
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover rounded-xl shadow-lg"
+              style={{
+                transform:
+                  index % 2 === 0 ? "translateX(-50%)" : "translateX(50%)", // تحريك الصورة لليسار أو اليمين أكثر
+                transition: "transform 0.5s ease-in-out",
+              }}
             />
 
-            {/* الكرت اللي على اليمين */}
-            <div className="absolute -right-28 top-1/2 -translate-y-1/2 bg-white p-6 rounded-xl shadow-2xl w-64">
+            {/* الكرت في منتصف الصورة وتثبيت مكانه */}
+            <div
+              className="absolute bg-white p-6 rounded-xl shadow-2xl w-64"
+              style={{
+                top: "50%", // جعل الكرت في منتصف الصورة عموديًا
+                left: "50%", // تثبيت الكرت في المنتصف أفقيًا
+                transform: "translate(-50%, -50%)", // لضبط الكرت في المنتصف بالضبط
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
               <p className="text-gray-600 mb-4 text-sm">
                 وصف مختصر عن المشروع والتقنيات المستخدمة فيه.

@@ -3,7 +3,7 @@ import React from "react";
 export default function Me({ darkMode }) {
   return (
     <>
-      <section dir="rtl" className="text-center text-[#b33939]">
+      <section dir="rtl" className="text-center text-[#b33939] min-h-[400px]">
         <div className="relative inline-block group">
           <h1 className="text-4xl mb-5" style={{ fontFamily: "TajawalBold" }}>
             مطور مواقع
