@@ -8,6 +8,7 @@ import Header from "./Header";
 import Me from "./Me";
 import Projects from "./Projects";
 import Skills from "./Skills";
+import Footer from "./Footer";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -38,6 +39,8 @@ function App() {
       <div>
         <Skills />
       </div>
+
+      <Footer />
     </>
   );
 }
