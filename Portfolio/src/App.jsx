@@ -7,6 +7,7 @@ import Introduce from "./Introduce";
 import Header from "./Header";
 import Me from "./Me";
 import Projects from "./Projects";
+import Skills from "./Skills";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -32,6 +33,10 @@ function App() {
 
       <div>
         <Projects darkMode={darkMode} />
+      </div>
+
+      <div>
+        <Skills />
       </div>
     </>
   );

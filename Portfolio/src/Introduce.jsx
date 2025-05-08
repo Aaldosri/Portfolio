@@ -1,5 +1,4 @@
 import React from "react";
-import img from "./img/pc.png";
 import img2 from "./img/Me.png";
 export default function Introduce() {
   return (
