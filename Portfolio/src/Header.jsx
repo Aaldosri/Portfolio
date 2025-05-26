@@ -1,8 +1,16 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LanguageContext } from "./context/LanguageContext";
+// Translate
+import { useTranslation } from "react-i18next";
 
 export default function Header({ darkMode, setDarkMode }) {
+  const { language, setLanguage } = useContext(LanguageContext);
+
+  function toggleLanguage() {
+    setLanguage(language === "en" ? "ar" : "en");
+  }
   function handleDarkMode(e) {
     setDarkMode(e.target.checked);
   }
@@ -26,7 +34,9 @@ export default function Header({ darkMode, setDarkMode }) {
           </div>
 
           <div>
-            <Button variant="outlined">EN</Button>
+            <Button onClick={toggleLanguage} variant="outlined">
+              {language === "en" ? "EN" : "AR"}
+            </Button>
           </div>
         </div>
 

@@ -1,6 +1,8 @@
 import React from "react";
 import img2 from "./img/Me.png";
-export default function Introduce() {
+import { Button } from "@mui/material";
+import "./Cv.scss";
+export default function Introduce({ darkMode }) {
   return (
     <>
       <section
@@ -14,7 +16,53 @@ export default function Introduce() {
             <h1 className="text-2xl text-[#b33939] m-5 mt-10">
               مطور ويب قادر انه يساعدك ببناء المواقع بشكل احترافي
             </h1>
-            {/* <h1 className="text-2xl text-[#b33939] m-5 mt-0">بشكل احترافي</h1> */}
+
+            <div className="buttons mt-10 ">
+              <button
+                className="blob-btn"
+                style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
+              >
+                السيرة الذاتية
+                <span className="blob-btn__inner">
+                  <span className="blob-btn__blobs">
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
+                  </span>
+                </span>
+              </button>
+              <br />
+            </div>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              style={{
+                position: "absolute",
+                width: 0,
+                height: 0,
+                overflow: "hidden",
+              }}
+            >
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    result="blur"
+                    stdDeviation="10"
+                  />
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                    result="goo"
+                  />
+                  <feBlend in2="goo" in="SourceGraphic" result="mix" />
+                </filter>
+              </defs>
+            </svg>
+
             <div className="flex gap-8 mt-15 m-5">
               <a
                 href="https://www.linkedin.com/in/yourusername"
