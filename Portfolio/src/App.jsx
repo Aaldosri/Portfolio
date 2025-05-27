@@ -11,10 +11,10 @@ import Skills from "./Skills";
 import Footer from "./Footer";
 
 // Context
-import LanguageProvider from "./context/LanguageContext";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [local, setLocal] = useState("ar");
 
   useEffect(() => {
     if (darkMode) {
@@ -26,26 +26,29 @@ function App() {
 
   return (
     <>
-      <LanguageProvider>
-        <div>
-          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        </div>
-        {/* <div className="mx-4 "> */}
-        <Introduce darkMode={darkMode} />
+      <div>
+        <Header
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          local={local}
+          setLocal={setLocal}
+        />
+      </div>
+      {/* <div className="mx-4 "> */}
+      <Introduce darkMode={darkMode} />
 
-        {/* <Me darkMode={darkMode} /> */}
-        {/* </div> */}
+      {/* <Me darkMode={darkMode} /> */}
+      {/* </div> */}
 
-        <div>
-          <Projects darkMode={darkMode} />
-        </div>
+      <div>
+        <Projects darkMode={darkMode} />
+      </div>
 
-        <div>
-          <Skills />
-        </div>
+      <div>
+        <Skills />
+      </div>
 
-        <Footer />
-      </LanguageProvider>
+      <Footer />
     </>
   );
 }

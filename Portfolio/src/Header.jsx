@@ -1,23 +1,43 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { useState, useEffect, useContext } from "react";
-import { LanguageContext } from "./context/LanguageContext";
+
 // Translate
 import { useTranslation } from "react-i18next";
 
-export default function Header({ darkMode, setDarkMode }) {
-  const { language, setLanguage } = useContext(LanguageContext);
+export default function Header({ darkMode, setDarkMode, local, setLocal }) {
+  const { t, i18n } = useTranslation();
 
-  function toggleLanguage() {
-    setLanguage(language === "en" ? "ar" : "en");
+  // const toggleLanguage = () => {
+  //   const newLang = language === "ar" ? "en" : "ar";
+  //   setLanguage(newLang);
+  //   i18n.changeLanguage(newLang);
+  //   document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
+  //   console.log("تغيير اللغة إلى:", newLang);
+  // };
+
+  function handleLanguageClick() {
+    if (local == "en") {
+      setLocal("ar");
+      i18n.changeLanguage("ar");
+    } else {
+      setLocal("en");
+      i18n.changeLanguage("en");
+    }
   }
   function handleDarkMode(e) {
     setDarkMode(e.target.checked);
   }
 
+  useEffect(() => {
+    i18n.changeLanguage(local);
+  }, []);
+
+  const direction = local == "ar" ? "ltr" : "rtl";
   return (
     <>
       <header
+        dir={direction}
         className={`header sticky top-0 ${
           darkMode ? "bg-white" : "bg-[#1a1a1a]"
         } shadow-md flex items-center justify-between px-1 py-6`}
@@ -34,8 +54,8 @@ export default function Header({ darkMode, setDarkMode }) {
           </div>
 
           <div>
-            <Button onClick={toggleLanguage} variant="outlined">
-              {language === "en" ? "EN" : "AR"}
+            <Button onClick={handleLanguageClick} variant="outlined">
+              {local === "ar" ? "AR" : "EN"}
             </Button>
           </div>
         </div>
@@ -53,9 +73,13 @@ export default function Header({ darkMode, setDarkMode }) {
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
-                للتواصل
+                {t("Contact")}
               </a>
-              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span
+                className={`absolute bottom-0 ${
+                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
+                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+              ></span>
             </li>
 
             <li className="relative group p-4 cursor-pointer">
@@ -65,9 +89,13 @@ export default function Header({ darkMode, setDarkMode }) {
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
-                المهارات
+                {t("Skills")}
               </a>
-              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span
+                className={`absolute bottom-0 ${
+                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
+                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+              ></span>
             </li>
 
             <li className="relative group p-4 cursor-pointer">
@@ -77,9 +105,13 @@ export default function Header({ darkMode, setDarkMode }) {
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
-                المشاريع
+                {t("Projects")}
               </a>
-              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span
+                className={`absolute bottom-0 ${
+                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
+                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+              ></span>
             </li>
 
             <li className="relative group p-4 cursor-pointer">
@@ -89,9 +121,13 @@ export default function Header({ darkMode, setDarkMode }) {
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
-                من انا
+                {t("Me")}
               </a>
-              <span className="absolute right-0 bottom-0 w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full origin-right"></span>
+              <span
+                className={`absolute bottom-0 ${
+                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
+                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+              ></span>
             </li>
           </ul>
         </nav>
@@ -102,7 +138,7 @@ export default function Header({ darkMode, setDarkMode }) {
               darkMode ? "text-[#1a1a1a]" : "text-white"
             }`}
           >
-            عبدالله
+            {t("Abdullah")}
             {/* Top border */}
             <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
             {/* Bottom border */}
