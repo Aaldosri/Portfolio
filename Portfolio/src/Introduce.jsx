@@ -2,19 +2,41 @@ import React from "react";
 import img2 from "./img/Me.png";
 import { Button } from "@mui/material";
 import "./Cv.scss";
-export default function Introduce({ darkMode }) {
+import { dir } from "i18next";
+
+// Translate
+import { useTranslation } from "react-i18next";
+
+export default function Introduce({ darkMode, local }) {
+  const { t } = useTranslation();
+
+  const direction = local == "ar" ? "rtl" : "ltr";
+
   return (
     <>
       <section
         className="flex flex-col md:flex-row  justify-center gap-50 items-start mt-10 min-h-[600px]"
-        dir="rtl"
+        dir={direction}
       >
         <div className="flex gap-8">
           <div style={{ fontFamily: "TajawalBold" }}>
-            <h1 className="text-5xl text-[#b33939] m-5">أهلا !</h1>
-            <h1 className="text-5xl text-[#b33939] m-5">أنا عبدالله الدوسري</h1>
+            <h1 className="text-5xl text-[#b33939] m-5">{t("Hey")} !</h1>
+            <h1 className="text-5xl text-[#b33939] m-5">
+              {" "}
+              {t("I am Abdullah Al-Dosari")}
+            </h1>
             <h1 className="text-2xl text-[#b33939] m-5 mt-10">
-              مطور ويب قادر انه يساعدك ببناء المواقع بشكل احترافي
+              {local === "en" ? (
+                <>
+                  {t(
+                    "Web developer I can help you build your website professionally"
+                  )}
+                  <br />
+                  {t("and with high quality")}
+                </>
+              ) : (
+                t("مطور ويب اقدر اساعدك ببناء موقعك بشكل احترافي وبجودة عالية")
+              )}
             </h1>
 
             <div className="buttons mt-10 ">
@@ -22,7 +44,8 @@ export default function Introduce({ darkMode }) {
                 className="blob-btn"
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
               >
-                السيرة الذاتية
+                {t("CV")}
+
                 <span className="blob-btn__inner">
                   <span className="blob-btn__blobs">
                     <span className="blob-btn__blob"></span>

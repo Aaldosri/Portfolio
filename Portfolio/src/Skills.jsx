@@ -5,6 +5,9 @@ import "aos/dist/aos.css";
 
 import tailwind from "./img/tailwind.svg";
 
+// Translate
+import { useTranslation } from "react-i18next";
+
 // ICONS
 import {
   FaHtml5,
@@ -18,6 +21,8 @@ import {
 import { BeakerIcon } from "@heroicons/react/20/solid";
 
 export default function Skills() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -42,7 +47,8 @@ export default function Skills() {
             className="text-4xl mb-5 text-center text-[#b33939]"
             style={{ fontFamily: "TajawalBold" }}
           >
-            المهارات
+            {t("Skills")}
+
             <span className="absolute bottom-0 left-0 right-0 border-b-2 border-[#b33939]"></span>
           </h1>
         </div>

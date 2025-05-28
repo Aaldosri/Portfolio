@@ -35,13 +35,13 @@ function App() {
         />
       </div>
       {/* <div className="mx-4 "> */}
-      <Introduce darkMode={darkMode} />
+      <Introduce darkMode={darkMode} local={local} />
 
       {/* <Me darkMode={darkMode} /> */}
       {/* </div> */}
 
       <div>
-        <Projects darkMode={darkMode} />
+        <Projects darkMode={darkMode} local={local} />
       </div>
 
       <div>
