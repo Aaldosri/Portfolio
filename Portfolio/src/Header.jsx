@@ -17,7 +17,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function Header({ darkMode, setDarkMode, local, setLocal }) {
+export default function Header({
+  darkMode,
+  setDarkMode,
+  local,
+  setLocal,
+  onScrollToSection,
+}) {
+  const [scrolled, setScrolled] = useState(false);
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -55,14 +63,27 @@ export default function Header({ darkMode, setDarkMode, local, setLocal }) {
     i18n.changeLanguage(local);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20); // لما ينزل أكثر من 20px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const direction = local == "ar" ? "ltr" : "rtl";
   return (
     <>
       <header
         dir={direction}
-        className={`header sticky top-0 ${
-          darkMode ? "bg-white" : "bg-[#1a1a1a]"
-        } shadow-md flex items-center justify-between px-1 py-6`}
+        className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-6 transition-all duration-300 shadow-md ${
+          scrolled
+            ? darkMode
+              ? "bg-white/90"
+              : "bg-[#1a1a1a]/90"
+            : "bg-transparent"
+        }`}
       >
         <div class="w-3/12 flex justify-end items-center gap-4">
           <div className="wrapper">
@@ -158,15 +179,17 @@ export default function Header({ darkMode, setDarkMode, local, setLocal }) {
               </Dialog>
             </li>
 
-            <li className="relative group p-4 cursor-pointer">
-              <a
-                href=""
+            <li
+              onClick={() => onScrollToSection("skills")}
+              className="relative group p-4 cursor-pointer"
+            >
+              <span
                 className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
                 {t("Skills")}
-              </a>
+              </span>
               <span
                 className={`absolute bottom-0 ${
                   local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
@@ -174,15 +197,17 @@ export default function Header({ darkMode, setDarkMode, local, setLocal }) {
               ></span>
             </li>
 
-            <li className="relative group p-4 cursor-pointer">
-              <a
-                href=""
-                className={` text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+            <li
+              onClick={() => onScrollToSection("projects")}
+              className="relative group p-4 cursor-pointer"
+            >
+              <span
+                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
                 {t("Projects")}
-              </a>
+              </span>
               <span
                 className={`absolute bottom-0 ${
                   local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
@@ -190,15 +215,17 @@ export default function Header({ darkMode, setDarkMode, local, setLocal }) {
               ></span>
             </li>
 
-            <li className="relative group p-4 cursor-pointer">
-              <a
-                href=""
-                className={` text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+            <li
+              onClick={() => onScrollToSection("me")}
+              className="relative group p-4 cursor-pointer"
+            >
+              <span
+                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
               >
                 {t("Me")}
-              </a>
+              </span>
               <span
                 className={`absolute bottom-0 ${
                   local === "ar" ? "right-0 origin-right" : "left-0 origin-left"

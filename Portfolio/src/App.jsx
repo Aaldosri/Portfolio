@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -16,6 +16,10 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [local, setLocal] = useState("ar");
 
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const meRef = useRef(null);
+
   useEffect(() => {
     if (darkMode) {
       document.body.style.backgroundColor = "#ffffff";
@@ -26,29 +30,48 @@ function App() {
 
   return (
     <>
-      <div>
-        <Header
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-          local={local}
-          setLocal={setLocal}
-        />
+      <Header
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        local={local}
+        setLocal={setLocal}
+        onScrollToSection={(section) => {
+          let target = null;
+          let yOffset = 0;
+
+          if (section === "skills") target = skillsRef.current;
+          if (section === "projects") {
+            target = projectsRef.current;
+            yOffset = -150; // تعويض بسيط للمشاريع فقط
+          }
+          if (section === "me") {
+            target = projectsRef.current;
+            yOffset = -800; // تعويض بسيط للمشاريع فقط
+          }
+
+          if (target) {
+            const y =
+              target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }}
+      />
+
+      <div ref={meRef}>
+        <Introduce darkMode={darkMode} local={local} />
       </div>
-      {/* <div className="mx-4 "> */}
-      <Introduce darkMode={darkMode} local={local} />
 
-      {/* <Me darkMode={darkMode} /> */}
-      {/* </div> */}
-
-      <div>
+      <div ref={projectsRef}>
         <Projects darkMode={darkMode} local={local} />
       </div>
 
-      <div>
+      <div ref={skillsRef}>
         <Skills />
       </div>
 
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
