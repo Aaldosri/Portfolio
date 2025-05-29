@@ -2,10 +2,32 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useState, useEffect, useContext } from "react";
 
+// External Libraries
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
+
 // Translate
 import { useTranslation } from "react-i18next";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
 export default function Header({ darkMode, setDarkMode, local, setLocal }) {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const { t, i18n } = useTranslation();
 
   // const toggleLanguage = () => {
@@ -67,19 +89,73 @@ export default function Header({ darkMode, setDarkMode, local, setLocal }) {
         >
           <ul className="flex items-center">
             <li className="relative group p-4 cursor-pointer">
-              <a
+              <button
                 href=""
-                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                className={`text-3xl cursor-pointer group-hover:text-[#b33939] transition-colors duration-200 ${
                   darkMode ? "text-[#1a1a1a]" : "text-white"
                 }`}
+                onClick={handleClickOpen}
               >
                 {t("Contact")}
-              </a>
+              </button>
               <span
                 className={`absolute bottom-0 ${
                   local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
                 } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
               ></span>
+              <Dialog
+                open={open}
+                slots={{
+                  transition: Transition,
+                }}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <form
+                  className={`max-w-[620px] mx-auto p-5 rounded-md transition-all duration-300 ${
+                    darkMode ? "bg-white text-black" : "bg-[#1e1e28] text-white"
+                  }`}
+                  dir={local === "ar" ? "rtl" : "ltr"}
+                >
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder={local == "ar" ? "الاسم" : "Name"}
+                    className={`font-medium text-lg rounded-md leading-[22px] ${
+                      darkMode
+                        ? "text-white placeholder-gray-400"
+                        : "text-black placeholder-gray-400"
+                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
+                  />{" "}
+                  <input
+                    name="email"
+                    type="text"
+                    placeholder={local === "ar" ? "الايميل" : "Email"}
+                    className={`font-medium text-lg rounded-md leading-[22px] ${
+                      darkMode
+                        ? "text-white placeholder-gray-400"
+                        : "text-black placeholder-gray-400"
+                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
+                  />
+                  <textarea
+                    name="text"
+                    placeholder={local === "ar" ? "الرسالة" : "Message"}
+                    className={`font-medium text-lg rounded-md bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949] h-[150px] resize-y ${
+                      darkMode
+                        ? "text-white placeholder-gray-400"
+                        : "text-black placeholder-gray-400"
+                    }`}
+                  ></textarea>
+                  <input
+                    type="submit"
+                    value={local === "ar" ? "إرسال" : "SUBMIT"}
+                    className={`font-medium text-lg cursor-pointer rounded-md leading-[22px] ${
+                      darkMode ? "text-black" : "text-white"
+                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
+                  />
+                </form>
+              </Dialog>
             </li>
 
             <li className="relative group p-4 cursor-pointer">
