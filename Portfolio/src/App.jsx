@@ -46,7 +46,7 @@ function App() {
           }
           if (section === "me") {
             target = projectsRef.current;
-            yOffset = -800; // تعويض بسيط للمشاريع فقط
+            yOffset = -820; // تعويض بسيط للمشاريع فقط
           }
 
           if (target) {
