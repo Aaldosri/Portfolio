@@ -1,13 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 // External Libraries
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 
 // Translate
@@ -24,6 +21,16 @@ export default function Header({
   setLocal,
   onScrollToSection,
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+  };
+  const handleMenuClick = (section) => {
+    setMenuOpen(false);
+    onScrollToSection(section);
+  };
+
   const [scrolled, setScrolled] = useState(false);
 
   const [open, setOpen] = React.useState(false);
@@ -77,7 +84,7 @@ export default function Header({
     <>
       <header
         dir={direction}
-        className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-6 transition-all duration-300 shadow-md ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-md px-4 sm:px-6 ${
           scrolled
             ? darkMode
               ? "bg-white/90"
@@ -85,172 +92,287 @@ export default function Header({
             : "bg-transparent"
         }`}
       >
-        <div class="w-3/12 flex justify-end items-center gap-4">
-          <div className="wrapper">
-            <input
-              type="checkbox"
-              name="checkbox"
-              className="switch"
-              onChange={handleDarkMode}
-              checked={darkMode}
-            />
+        {" "}
+        {/* القائمة الكاملة لأجهزة الديسكتوب */}
+        <div className="hidden md:flex items-center justify-between px-4 py-6">
+          {/* اليسار */}
+          <div className="w-3/12 flex justify-end items-center gap-4">
+            <div className="wrapper">
+              <input
+                type="checkbox"
+                name="checkbox"
+                className="switch"
+                onChange={handleDarkMode}
+                checked={darkMode}
+              />
+            </div>
+
+            <div>
+              <Button onClick={handleLanguageClick} variant="outlined">
+                {local === "ar" ? "AR" : "EN"}
+              </Button>
+            </div>
           </div>
 
-          <div>
-            <Button onClick={handleLanguageClick} variant="outlined">
-              {local === "ar" ? "AR" : "EN"}
-            </Button>
-          </div>
-        </div>
-
-        <nav
-          className={`nav font-semibold text-lg ${
-            darkMode ? "text-[#1a1a1a]" : "text-white"
-          }`}
-        >
-          <ul className="flex items-center">
-            <li className="relative group p-4 cursor-pointer">
-              <button
-                href=""
-                className={`text-3xl cursor-pointer group-hover:text-[#b33939] transition-colors duration-200 ${
-                  darkMode ? "text-[#1a1a1a]" : "text-white"
-                }`}
-                onClick={handleClickOpen}
-              >
-                {t("Contact")}
-              </button>
-              <span
-                className={`absolute bottom-0 ${
-                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
-                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
-              ></span>
-              <Dialog
-                open={open}
-                slots={{
-                  transition: Transition,
-                }}
-                keepMounted
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
-              >
-                <form
-                  className={`max-w-[620px] mx-auto p-5 rounded-md transition-all duration-300 ${
-                    darkMode ? "bg-white text-black" : "bg-[#1e1e28] text-white"
-                  }`}
-                  dir={local === "ar" ? "rtl" : "ltr"}
-                >
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder={local == "ar" ? "الاسم" : "Name"}
-                    className={`font-medium text-lg rounded-md leading-[22px] ${
-                      darkMode
-                        ? "text-white placeholder-gray-400"
-                        : "text-black placeholder-gray-400"
-                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
-                  />{" "}
-                  <input
-                    name="email"
-                    type="text"
-                    placeholder={local === "ar" ? "الايميل" : "Email"}
-                    className={`font-medium text-lg rounded-md leading-[22px] ${
-                      darkMode
-                        ? "text-white placeholder-gray-400"
-                        : "text-black placeholder-gray-400"
-                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
-                  />
-                  <textarea
-                    name="text"
-                    placeholder={local === "ar" ? "الرسالة" : "Message"}
-                    className={`font-medium text-lg rounded-md bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949] h-[150px] resize-y ${
-                      darkMode
-                        ? "text-white placeholder-gray-400"
-                        : "text-black placeholder-gray-400"
-                    }`}
-                  ></textarea>
-                  <input
-                    type="submit"
-                    value={local === "ar" ? "إرسال" : "SUBMIT"}
-                    className={`font-medium text-lg cursor-pointer rounded-md leading-[22px] ${
-                      darkMode ? "text-black" : "text-white"
-                    } bg-transparent border-2 border-[#CC6666] transition-all duration-300 p-3 mb-4 w-full outline-none focus:border-[#CC4949]`}
-                  />
-                </form>
-              </Dialog>
-            </li>
-
-            <li
-              onClick={() => onScrollToSection("skills")}
-              className="relative group p-4 cursor-pointer"
-            >
-              <span
-                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
-                  darkMode ? "text-[#1a1a1a]" : "text-white"
-                }`}
-              >
-                {t("Skills")}
-              </span>
-              <span
-                className={`absolute bottom-0 ${
-                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
-                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
-              ></span>
-            </li>
-
-            <li
-              onClick={() => onScrollToSection("projects")}
-              className="relative group p-4 cursor-pointer"
-            >
-              <span
-                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
-                  darkMode ? "text-[#1a1a1a]" : "text-white"
-                }`}
-              >
-                {t("Projects")}
-              </span>
-              <span
-                className={`absolute bottom-0 ${
-                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
-                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
-              ></span>
-            </li>
-
-            <li
-              onClick={() => onScrollToSection("me")}
-              className="relative group p-4 cursor-pointer"
-            >
-              <span
-                className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
-                  darkMode ? "text-[#1a1a1a]" : "text-white"
-                }`}
-              >
-                {t("Me")}
-              </span>
-              <span
-                className={`absolute bottom-0 ${
-                  local === "ar" ? "right-0 origin-right" : "left-0 origin-left"
-                } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
-              ></span>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="relative group p-4 cursor-pointer">
-          <h1
-            className={`text-5xl relative transition-colors duration-200 text-right mr-8 group-hover:text-[#b33939] ${
+          {/* المنتصف */}
+          <nav
+            className={`nav font-semibold text-lg ${
               darkMode ? "text-[#1a1a1a]" : "text-white"
             }`}
           >
-            {t("Abdullah")}
-            {/* Top border */}
-            <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
-            {/* Bottom border */}
-            <span className="absolute bottom-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
-            {/* Left border */}
-            <span className="absolute top-0 left-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
-            {/* Right border */}
-            <span className="absolute top-0 right-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
-          </h1>
+            <ul className="flex items-center">
+              <li className="relative group p-4 cursor-pointer">
+                <button
+                  className={`text-3xl cursor-pointer group-hover:text-[#b33939] transition-colors duration-200 ${
+                    darkMode ? "text-[#1a1a1a]" : "text-white"
+                  }`}
+                  onClick={handleClickOpen}
+                >
+                  {t("Contact")}
+                </button>
+                <Dialog
+                  open={open}
+                  slots={{ transition: Transition }}
+                  keepMounted
+                  onClose={handleClose}
+                  aria-describedby="alert-dialog-slide-description"
+                  dir={local === "ar" ? "rtl" : "ltr"}
+                  PaperProps={{
+                    style: {
+                      backgroundColor: darkMode ? "white" : "#1a1a1a",
+                    },
+                    className: "w-[700px] max-w-full",
+                  }}
+                >
+                  <h1
+                    className="text-center mt-5 text-4xl font-extrabold tracking-wide"
+                    style={{ color: darkMode ? "black" : "white" }}
+                  >
+                    {local === "ar" ? "للتواصل" : "Contact Us"}
+                  </h1>
+
+                  <DialogContent>
+                    <form className="w-full mt-4">
+                      <input
+                        name="name"
+                        type="text"
+                        placeholder={local === "ar" ? "الاسم" : "Name"}
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition 
+          ${
+            darkMode
+              ? "text-black placeholder-black"
+              : "text-white placeholder-white"
+          }`}
+                        style={{
+                          borderColor: "#b33939",
+                          backgroundColor: "transparent",
+                        }}
+                      />
+
+                      <input
+                        name="email"
+                        type="text"
+                        placeholder={
+                          local === "ar" ? "البريد الإلكتروني" : "Email"
+                        }
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition 
+          ${
+            darkMode
+              ? "text-black placeholder-black"
+              : "text-white placeholder-white"
+          }`}
+                        style={{
+                          borderColor: "#b33939",
+                          backgroundColor: "transparent",
+                        }}
+                      />
+
+                      <textarea
+                        name="text"
+                        placeholder={local === "ar" ? "الرسالة" : "Message"}
+                        rows={6}
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none resize-y transition 
+          ${
+            darkMode
+              ? "text-black placeholder-black"
+              : "text-white placeholder-white"
+          }`}
+                        style={{
+                          borderColor: "#b33939",
+                          backgroundColor: "transparent",
+                        }}
+                      />
+
+                      <input
+                        type="submit"
+                        value={local === "ar" ? "إرسال" : "Submit"}
+                        className="w-full"
+                        style={{
+                          backgroundColor: "#b33939",
+                          color: "white",
+                          fontWeight: "bold",
+                          fontSize: "24px",
+                          paddingTop: "12px",
+                          paddingBottom: "12px",
+                          borderRadius: "0.375rem",
+                          cursor: "pointer",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseOver={(e) =>
+                          (e.target.style.backgroundColor = "#992d2d")
+                        }
+                        onMouseOut={(e) =>
+                          (e.target.style.backgroundColor = "#b33939")
+                        }
+                      />
+                    </form>
+                  </DialogContent>
+                </Dialog>
+
+                <span
+                  className={`absolute bottom-0 ${
+                    local === "ar"
+                      ? "right-0 origin-right"
+                      : "left-0 origin-left"
+                  } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+                ></span>
+              </li>
+              <li
+                onClick={() => onScrollToSection("skills")}
+                className="relative group p-4 cursor-pointer"
+              >
+                <span
+                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                    darkMode ? "text-[#1a1a1a]" : "text-white"
+                  }`}
+                >
+                  {t("Skills")}
+                </span>
+                <span
+                  className={`absolute bottom-0 ${
+                    direction === "rtl"
+                      ? "left-0 origin-left"
+                      : "right-0 origin-right"
+                  } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+                ></span>
+              </li>
+
+              <li
+                onClick={() => onScrollToSection("projects")}
+                className="relative group p-4 cursor-pointer"
+              >
+                <span
+                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                    darkMode ? "text-[#1a1a1a]" : "text-white"
+                  }`}
+                >
+                  {t("Projects")}
+                </span>
+                <span
+                  className={`absolute bottom-0 ${
+                    direction === "rtl"
+                      ? "left-0 origin-left"
+                      : "right-0 origin-right"
+                  } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+                ></span>
+              </li>
+
+              <li
+                onClick={() => onScrollToSection("me")}
+                className="relative group p-4 cursor-pointer"
+              >
+                <span
+                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                    darkMode ? "text-[#1a1a1a]" : "text-white"
+                  }`}
+                >
+                  {t("Me")}
+                </span>
+                <span
+                  className={`absolute bottom-0 ${
+                    direction === "rtl"
+                      ? "left-0 origin-left"
+                      : "right-0 origin-right"
+                  } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
+                ></span>
+              </li>
+            </ul>
+          </nav>
+
+          {/* الاسم */}
+          <div className="relative group p-4 cursor-pointer">
+            <h1
+              className={`text-5xl transition-colors duration-200 mr-8 group-hover:text-[#b33939] ${
+                darkMode ? "text-[#1a1a1a]" : "text-white"
+              }`}
+            >
+              {t("Abdullah")}
+              <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
+              <span className="absolute bottom-[-10px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
+              <span className="absolute top-0 left-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
+              <span className="absolute top-0 right-[-10px] h-0 w-0.5 bg-[#b33939] group-hover:h-full transition-all duration-500"></span>
+            </h1>
+          </div>
+        </div>
+        {/* قائمة الجوال */}
+        <div className="flex md:hidden items-center justify-between p-4 relative">
+          {/* يسار: زر الهامبرجر */}
+          <button
+            onClick={handleMenuToggle}
+            className="flex flex-col justify-between w-12 h-8 z-50"
+          >
+            <span
+              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
+                menuOpen ? "rotate-45 translate-y-3 origin-center" : ""
+              }`}
+            ></span>
+            <span
+              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
+                menuOpen ? "scale-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-3 origin-center" : ""
+              }`}
+            ></span>
+          </button>
+          {/* الوسط: اللغة والوضع الليلي */}
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="checkbox"
+              className="switch scale-75 sm:scale-90"
+              onChange={handleDarkMode}
+              checked={darkMode}
+            />
+            <Button
+              onClick={handleLanguageClick}
+              variant="outlined"
+              size="small"
+            >
+              {local === "ar" ? "AR" : "EN"}
+            </Button>
+          </div>
+
+          {/* اليمين: الاسم */}
+          <h1 className="text-lg font-bold text-[#0e2431]">{t("Abdullah")}</h1>
+
+          {/* قائمة التنقل */}
+          <div
+            className={`fixed top-0 left-0 h-screen w-full bg-white text-[#0e2431] flex flex-col items-center justify-center gap-8 text-2xl font-medium transform transition-transform duration-300 z-40 ${
+              menuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <button onClick={() => handleMenuClick("me")}>{t("Me")}</button>
+            <button onClick={() => handleMenuClick("projects")}>
+              {t("Projects")}
+            </button>
+            <button onClick={() => handleMenuClick("skills")}>
+              {t("Skills")}
+            </button>
+            <button onClick={handleClickOpen}>{t("Contact")}</button>
+          </div>
         </div>
       </header>
     </>

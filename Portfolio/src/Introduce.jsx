@@ -108,7 +108,7 @@ export default function Introduce({ darkMode, local }) {
         </div>
 
         <div className="flex gap-8">
-          <div className="w-[500px] h-[500px] overflow-hidden rounded-xl shadow-md">
+          <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] overflow-hidden rounded-xl shadow-md">
             <img
               src={img2}
               alt="صورة"
