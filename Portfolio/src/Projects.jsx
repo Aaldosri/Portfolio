@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import img1 from "./img/pro1.png";
-
+import img2 from "./img/pro2w.png";
 import img3 from "./img/pro3.png";
 import img4 from "./img/pro4.png";
 
@@ -27,7 +27,7 @@ const projects = [
   },
   {
     title: "Weather",
-    image: img1,
+    image: img2,
     site: "https://example.com",
     github: "https://github.com",
   },
@@ -46,6 +46,19 @@ const projects = [
 ];
 
 export default function Projects({ darkMode, local }) {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsSmallScreen(window.innerWidth < 770);
+    }
+
+    handleResize(); // تحقق عند أول تحميل
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     AOS.init({
       duration: 400,
@@ -65,48 +78,48 @@ export default function Projects({ darkMode, local }) {
           style={{ fontFamily: "TajawalBold" }}
         >
           {t("Projects")}
-
           <span className="absolute bottom-0 left-0 right-0 border-b-2 border-[#b33939]"></span>
         </h1>
       </div>
-      {/* المشاريع */}
+
       <div className="flex flex-col gap-20 items-center">
         {projects.map((project, index) => (
           <div
             key={index}
             className="relative w-full max-w-[700px] mx-auto"
             data-aos={
-              local === "ar" && index % 2 === 0
-                ? "fade-left"
-                : local === "ar" && index % 2 !== 0
-                ? "fade-right"
-                : local !== "ar" && index % 2 === 0
-                ? "fade-right"
-                : "fade-left"
+              !isSmallScreen
+                ? local === "ar" && index % 2 === 0
+                  ? "fade-left"
+                  : local === "ar" && index % 2 !== 0
+                  ? "fade-right"
+                  : local !== "ar" && index % 2 === 0
+                  ? "fade-right"
+                  : "fade-left"
+                : undefined
             }
           >
-            {/* صورة المشروع */}
             <img
               src={project.image}
               alt={project.title}
-              className={`w-full h-[500px] object-cover rounded-xl shadow-lg transition-transform duration-500 ease-in-out relative z-0
-              ${
-                index % 2 === 0
-                  ? local === "ar"
-                    ? "md:translate-x-[60%]"
-                    : "md:translate-x-[-60%]"
-                  : local === "ar"
-                  ? "md:translate-x-[-60%]"
-                  : "md:translate-x-[60%]"
-              }
-            `}
+              className={`w-full h-[500px] md:h-[500px] sm:h-[300px] h-[200px] object-cover rounded-xl shadow-lg transition-transform duration-500 ease-in-out relative z-0
+    ${
+      index % 2 === 0
+        ? local === "ar"
+          ? "md:translate-x-[60%]"
+          : "md:translate-x-[-60%]"
+        : local === "ar"
+        ? "md:translate-x-[-60%]"
+        : "md:translate-x-[60%]"
+    }
+  `}
             />
 
-            {/* الكرت */}
             <div
               className={`bg-white border p-6 rounded-xl shadow-2xl w-64 mx-auto relative z-10
-              md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2
-              -mt-12 md:mt-0`}
+                md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2
+                -mt-12 md:mt-0
+              `}
             >
               <h3 className="text-xl font-bold mb-2">{project.title}</h3>
               <div className="flex gap-3 justify-center">
@@ -130,7 +143,7 @@ export default function Projects({ darkMode, local }) {
             </div>
           </div>
         ))}
-      </div>{" "}
+      </div>
     </section>
   );
 }

@@ -3,11 +3,47 @@ import img2 from "./img/Me.png";
 import { Button } from "@mui/material";
 import "./Cv.scss";
 import { dir } from "i18next";
+import { useEffect, useState } from "react";
 
 // Translate
 import { useTranslation } from "react-i18next";
 
+// External Libraries
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function Introduce({ darkMode, local }) {
+  const [aosEnabled, setAosEnabled] = useState(true);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 770) {
+        setAosEnabled(false);
+      } else {
+        setAosEnabled(true);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize(); // تفعيل أولي حسب الحجم الحالي
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (aosEnabled) {
+      AOS.init({ once: true, duration: 1000 });
+    } else {
+      AOS.refreshHard(); // لتحديث AOS وإيقاف الأنيميشن
+    }
+  }, [aosEnabled]);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-in-out",
+    });
+  }, []);
+
   const { t } = useTranslation();
 
   const direction = local == "ar" ? "rtl" : "ltr";
@@ -15,14 +51,18 @@ export default function Introduce({ darkMode, local }) {
   return (
     <>
       <section
-        className="flex mt-[200px] flex-col md:flex-row  justify-center gap-50 items-start mt-10 min-h-[600px]"
+        className="flex mt-[200px] flex-col md:flex-row justify-center gap-50 items-start mt-10 min-h-[600px]"
         dir={direction}
       >
-        <div className="flex gap-8">
+        <div
+          className="flex gap-8"
+          data-aos={aosEnabled ? "fade-left" : undefined}
+          data-aos-delay={aosEnabled ? "200" : undefined}
+        >
+          {/* المحتوى الأول */}
           <div style={{ fontFamily: "TajawalBold" }}>
-            <h1 className="text-5xl text-[#b33939] m-5">{t("Hey ! I am")} </h1>
+            <h1 className="text-5xl text-[#b33939] m-5">{t("Hey ! I am")}</h1>
             <h1 className="text-5xl text-[#b33939] m-5">
-              {" "}
               {t("Abdullah Al-Dosari")}
             </h1>
             <h1 className="text-2xl text-[#b33939] m-5 mt-10">
@@ -45,7 +85,6 @@ export default function Introduce({ darkMode, local }) {
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
               >
                 {t("CV")}
-
                 <span className="blob-btn__inner">
                   <span className="blob-btn__blobs">
                     <span className="blob-btn__blob"></span>
@@ -58,34 +97,7 @@ export default function Introduce({ darkMode, local }) {
               <br />
             </div>
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              version="1.1"
-              style={{
-                position: "absolute",
-                width: 0,
-                height: 0,
-                overflow: "hidden",
-              }}
-            >
-              <defs>
-                <filter id="goo">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    result="blur"
-                    stdDeviation="10"
-                  />
-                  <feColorMatrix
-                    in="blur"
-                    mode="matrix"
-                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
-                    result="goo"
-                  />
-                  <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                </filter>
-              </defs>
-            </svg>
-
+            {/* روابط الشبكات */}
             <div className="flex gap-8 mt-15 m-5">
               <a
                 href="https://www.linkedin.com/in/yourusername"
@@ -107,13 +119,27 @@ export default function Introduce({ darkMode, local }) {
           </div>
         </div>
 
-        <div className="flex gap-8">
-          <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] overflow-hidden rounded-xl shadow-md">
-            <img
-              src={img2}
-              alt="صورة"
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-            />
+        <div
+          className="flex gap-8"
+          data-aos={aosEnabled ? "fade-right" : undefined}
+          data-aos-delay={aosEnabled ? "200" : undefined}
+        >
+          <div className="flex justify-center">
+            <div
+              className="
+      w-[200px] h-[200px]  
+      sm:w-[300px] sm:h-[300px]  
+      md:w-[500px] md:h-[500px]  
+      overflow-hidden rounded-xl shadow-md
+      mx-auto
+    "
+            >
+              <img
+                src={img2}
+                alt="صورة"
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         </div>
       </section>
