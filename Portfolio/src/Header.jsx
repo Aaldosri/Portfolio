@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 
@@ -6,6 +6,12 @@ import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import Slide from "@mui/material/Slide";
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+import emailjs from "emailjs-com";
 
 // Translate
 import { useTranslation } from "react-i18next";
@@ -21,7 +27,59 @@ export default function Header({
   setLocal,
   onScrollToSection,
 }) {
+  function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("تم إرسال الرسالة بنجاح!");
+        },
+        (error) => {
+          console.log(error.text);
+          alert("حدث خطأ أثناء الإرسال.");
+        }
+      );
+
+    e.target.reset(); // لمسح الحقول بعد الإرسال
+  }
+
+  const { t, i18n } = useTranslation();
+
+  // States
+
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
+  const schema = yup.object().shape({
+    name: yup
+      .string()
+      .min(3, local === "ar" ? "الاسم قصير جدًا" : "Name is too short")
+      .required(local === "ar" ? "الاسم مطلوب" : "Name is required"),
+    email: yup
+      .string()
+      .email(local === "ar" ? "البريد غير صالح" : "Invalid email")
+      .required(local === "ar" ? "البريد مطلوب" : "Email is required"),
+    message: yup
+      .string()
+      .required(local === "ar" ? "الرسالة مطلوبة" : "Message is required"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  // HANDLERS
 
   const handleMenuToggle = () => {
     setMenuOpen((prev) => !prev);
@@ -31,10 +89,6 @@ export default function Header({
     onScrollToSection(section);
   };
 
-  const [scrolled, setScrolled] = useState(false);
-
-  const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -42,16 +96,6 @@ export default function Header({
   const handleClose = () => {
     setOpen(false);
   };
-
-  const { t, i18n } = useTranslation();
-
-  // const toggleLanguage = () => {
-  //   const newLang = language === "ar" ? "en" : "ar";
-  //   setLanguage(newLang);
-  //   i18n.changeLanguage(newLang);
-  //   document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
-  //   console.log("تغيير اللغة إلى:", newLang);
-  // };
 
   function handleLanguageClick() {
     if (local == "en") {
@@ -152,17 +196,18 @@ export default function Header({
                   </h1>
 
                   <DialogContent>
-                    <form className="w-full mt-4">
+                    <form className="w-full mt-4" onSubmit={sendEmail}>
                       <input
                         name="name"
                         type="text"
                         placeholder={local === "ar" ? "الاسم" : "Name"}
-                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition 
-          ${
-            darkMode
-              ? "text-black placeholder-black"
-              : "text-white placeholder-white"
-          }`}
+                        required
+                        minLength={3}
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition ${
+                          darkMode
+                            ? "text-black placeholder-black"
+                            : "text-white placeholder-white"
+                        }`}
                         style={{
                           borderColor: "#b33939",
                           backgroundColor: "transparent",
@@ -171,16 +216,16 @@ export default function Header({
 
                       <input
                         name="email"
-                        type="text"
+                        type="email" // هنا غيرت النوع ليصير بريد إلكتروني صحيح
                         placeholder={
                           local === "ar" ? "البريد الإلكتروني" : "Email"
                         }
-                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition 
-          ${
-            darkMode
-              ? "text-black placeholder-black"
-              : "text-white placeholder-white"
-          }`}
+                        required
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none transition ${
+                          darkMode
+                            ? "text-black placeholder-black"
+                            : "text-white placeholder-white"
+                        }`}
                         style={{
                           borderColor: "#b33939",
                           backgroundColor: "transparent",
@@ -191,12 +236,12 @@ export default function Header({
                         name="text"
                         placeholder={local === "ar" ? "الرسالة" : "Message"}
                         rows={6}
-                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none resize-y transition 
-          ${
-            darkMode
-              ? "text-black placeholder-black"
-              : "text-white placeholder-white"
-          }`}
+                        required
+                        className={`block w-full mb-4 px-4 py-3 text-lg font-medium border-2 rounded-md outline-none resize-y transition ${
+                          darkMode
+                            ? "text-black placeholder-black"
+                            : "text-white placeholder-white"
+                        }`}
                         style={{
                           borderColor: "#b33939",
                           backgroundColor: "transparent",
