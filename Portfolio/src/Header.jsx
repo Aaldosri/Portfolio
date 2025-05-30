@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import emailjs from "emailjs-com";
+import { useRef } from "react";
 
 // Translate
 import { useTranslation } from "react-i18next";
@@ -27,11 +28,18 @@ export default function Header({
   setLocal,
   onScrollToSection,
 }) {
+  const formRef = useRef();
+
   function sendEmail(e) {
     e.preventDefault();
 
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
+      .sendForm(
+        "service_4z9ymac",
+        "template_ir6z0xe",
+        formRef.current,
+        "3Doe_o0i-bohCcBFy"
+      )
       .then(
         (result) => {
           console.log(result.text);
@@ -55,29 +63,6 @@ export default function Header({
   const [scrolled, setScrolled] = useState(false);
 
   const [open, setOpen] = useState(false);
-
-  const schema = yup.object().shape({
-    name: yup
-      .string()
-      .min(3, local === "ar" ? "الاسم قصير جدًا" : "Name is too short")
-      .required(local === "ar" ? "الاسم مطلوب" : "Name is required"),
-    email: yup
-      .string()
-      .email(local === "ar" ? "البريد غير صالح" : "Invalid email")
-      .required(local === "ar" ? "البريد مطلوب" : "Email is required"),
-    message: yup
-      .string()
-      .required(local === "ar" ? "الرسالة مطلوبة" : "Message is required"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
 
   // HANDLERS
 
@@ -196,7 +181,11 @@ export default function Header({
                   </h1>
 
                   <DialogContent>
-                    <form className="w-full mt-4" onSubmit={sendEmail}>
+                    <form
+                      ref={formRef}
+                      onSubmit={sendEmail}
+                      className="w-full mt-4"
+                    >
                       <input
                         name="name"
                         type="text"
@@ -233,7 +222,7 @@ export default function Header({
                       />
 
                       <textarea
-                        name="text"
+                        name="message"
                         placeholder={local === "ar" ? "الرسالة" : "Message"}
                         rows={6}
                         required
