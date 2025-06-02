@@ -4,6 +4,16 @@ html,
 body {
   overflow-x: hidden;
 }
+.css-1blvszr-MuiButtonBase-root-MuiButton-root {
+  color: #b33939 !important;
+  border-color: #b33939 !important;
+  background-color: #fff !important;
+}
+
+.css-1blvszr-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: #fceaea !important;
+  border-color: #b33939 !important;
+}
 
 @font-face {
   font-family: TajawalMedium;

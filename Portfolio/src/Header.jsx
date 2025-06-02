@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import emailjs from "emailjs-com";
 import { useRef } from "react";
 
@@ -28,6 +30,8 @@ export default function Header({
   setLocal,
   onScrollToSection,
 }) {
+  const isXL = useMediaQuery("(min-width:1280px)");
+
   const formRef = useRef();
 
   function sendEmail(e) {
@@ -122,11 +126,10 @@ export default function Header({
             : "bg-transparent"
         }`}
       >
-        {" "}
-        {/* القائمة الكاملة لأجهزة الديسكتوب */}
+        {/* ====== هيدر الديسكتوب: يظهر فقط في lg وأعلى ====== */}
         <div className="hidden lg:flex items-center justify-between px-4 py-6">
-          {/* اليسار */}
-          <div className="w-3/12 flex justify-end items-center gap-4">
+          {/* ====== اليسار: الوضع الداكن وتغيير اللغة ====== */}
+          <div className="flex items-center gap-4">
             <div className="wrapper">
               <input
                 type="checkbox"
@@ -137,23 +140,21 @@ export default function Header({
               />
             </div>
 
-            <div>
-              <Button onClick={handleLanguageClick} variant="outlined">
-                {local === "ar" ? "AR" : "EN"}
-              </Button>
-            </div>
+            <Button onClick={handleLanguageClick} variant="outlined">
+              {local === "ar" ? "AR" : "EN"}
+            </Button>
           </div>
 
-          {/* المنتصف */}
+          {/* ====== المنتصف: روابط التنقل الرئيسية ====== */}
           <nav
             className={`nav font-semibold text-lg ${
               darkMode ? "text-[#1a1a1a]" : "text-white"
             }`}
           >
-            <ul className="flex items-center">
-              <li className="relative group p-4 cursor-pointer">
+            <ul className="flex items-center gap-6">
+              <li className="relative group cursor-pointer p-4">
                 <button
-                  className={`text-3xl cursor-pointer group-hover:text-[#b33939] transition-colors duration-200 ${
+                  className={`text-3xl cursor-pointer transition-colors duration-200 group-hover:text-[#b33939] ${
                     darkMode ? "text-[#1a1a1a]" : "text-white"
                   }`}
                   onClick={handleClickOpen}
@@ -206,7 +207,7 @@ export default function Header({
 
                       <input
                         name="email"
-                        type="email" // هنا غيرت النوع ليصير بريد إلكتروني صحيح
+                        type="email"
                         placeholder={
                           local === "ar" ? "البريد الإلكتروني" : "Email"
                         }
@@ -272,12 +273,13 @@ export default function Header({
                   } w-0 h-0.5 bg-[#b33939] transition-all duration-500 group-hover:w-full`}
                 ></span>
               </li>
+
               <li
+                className="relative group cursor-pointer p-4"
                 onClick={() => onScrollToSection("skills")}
-                className="relative group p-4 cursor-pointer"
               >
                 <span
-                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  className={`text-3xl transition-colors duration-200 group-hover:text-[#b33939] ${
                     darkMode ? "text-[#1a1a1a]" : "text-white"
                   }`}
                 >
@@ -293,11 +295,11 @@ export default function Header({
               </li>
 
               <li
+                className="relative group cursor-pointer p-4"
                 onClick={() => onScrollToSection("projects")}
-                className="relative group p-4 cursor-pointer"
               >
                 <span
-                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  className={`text-3xl transition-colors duration-200 group-hover:text-[#b33939] ${
                     darkMode ? "text-[#1a1a1a]" : "text-white"
                   }`}
                 >
@@ -313,11 +315,11 @@ export default function Header({
               </li>
 
               <li
+                className="relative group cursor-pointer p-4"
                 onClick={() => onScrollToSection("me")}
-                className="relative group p-4 cursor-pointer"
               >
                 <span
-                  className={`text-3xl group-hover:text-[#b33939] transition-colors duration-200 ${
+                  className={`text-3xl transition-colors duration-200 group-hover:text-[#b33939] ${
                     darkMode ? "text-[#1a1a1a]" : "text-white"
                   }`}
                 >
@@ -334,18 +336,12 @@ export default function Header({
             </ul>
           </nav>
 
-          {/* الاسم */}
+          {/* ====== اليمين: الاسم (ثابت في الهيدر) ====== */}
           <div className="relative group p-4 cursor-pointer">
             <h1
-              className={`
-    text-5xl 
-    mr-8 
-    transition-colors duration-200 
--   text-white
-+   text-white max-[500px]:text-white
-    ${darkMode ? "md:text-[#1a1a1a]" : ""}
-    group-hover:text-[#b33939]
-  `}
+              className={`text-5xl transition-colors duration-200 ${
+                darkMode ? "text-[#1a1a1a]" : "text-white"
+              } group-hover:text-[#b33939]`}
             >
               {t("Abdullah")}
               <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>
@@ -355,54 +351,78 @@ export default function Header({
             </h1>
           </div>
         </div>
-        {/* قائمة الجوال */}
-        <div className="flex md:hidden items-center justify-between p-4 relative">
-          {/* يسار: زر الهامبرجر */}
+
+        {/* ====== هيدر الجوال: يظهر فقط تحت lg ====== */}
+        <div className="flex lg:hidden items-center justify-between p-4 relative">
+          {/* ====== يسار: زر الهامبرجر ====== */}
           <button
             onClick={handleMenuToggle}
             className="flex flex-col justify-between w-12 h-8 z-50"
           >
             <span
-              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
-                menuOpen ? "rotate-45 translate-y-3 origin-center" : ""
-              }`}
+              className={`h-2 w-full rounded transition-all duration-300 ${
+                darkMode ? "bg-[#0e2431]" : "bg-white"
+              } ${menuOpen ? "rotate-45 translate-y-3 origin-center" : ""}`}
             ></span>
             <span
-              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
-                menuOpen ? "scale-0" : ""
-              }`}
+              className={`h-2 w-full rounded transition-all duration-300 ${
+                darkMode ? "bg-[#0e2431]" : "bg-white"
+              } ${menuOpen ? "scale-0" : ""}`}
             ></span>
             <span
-              className={`h-2 w-full bg-[#0e2431] rounded transition-all duration-300 ${
-                menuOpen ? "-rotate-45 -translate-y-3 origin-center" : ""
-              }`}
+              className={`h-2 w-full rounded transition-all duration-300 ${
+                darkMode ? "bg-[#0e2431]" : "bg-white"
+              } ${menuOpen ? "-rotate-45 -translate-y-3 origin-center" : ""}`}
             ></span>
           </button>
-          {/* الوسط: اللغة والوضع الليلي */}
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="checkbox"
-              className="switch scale-75 sm:scale-90"
-              onChange={handleDarkMode}
-              checked={darkMode}
-            />
+
+          {/* ====== الوسط: الوضع الداكن وتغيير اللغة ====== */}
+          <div className="flex items-center gap-4">
+            <div className="wrapper">
+              <input
+                type="checkbox"
+                name="checkbox"
+                className="switch"
+                onChange={handleDarkMode}
+                checked={darkMode}
+              />
+            </div>
+
+            {/* هنا زر MUI Desktop نطبّق عليه نفس ألواننا بالقوة */}
             <Button
               onClick={handleLanguageClick}
               variant="outlined"
-              size="small"
+              sx={{
+                color: "#b33939 !important",
+                borderColor: "#b33939 !important",
+                backgroundColor: "#fff !important",
+                "&:hover": {
+                  backgroundColor: "#fceaea !important",
+                  borderColor: "#b33939 !important",
+                },
+              }}
             >
               {local === "ar" ? "AR" : "EN"}
             </Button>
           </div>
 
-          {/* اليمين: الاسم */}
-          <h1 className="text-lg font-bold text-[#0e2431]">{t("Abdullah")}</h1>
+          {/* ====== اليمين: الاسم ====== */}
+          <h1
+            className={`text-lg font-bold ${
+              darkMode ? "text-[#1a1a1a]" : "text-white"
+            }`}
+          >
+            {t("Abdullah")}
+          </h1>
 
-          {/* قائمة التنقل */}
+          {/* ====== المينو المنبثق (يحتوي على جميع الروابط) ====== */}
           <div
-            className={`fixed top-0 left-0 h-screen w-full bg-white text-[#0e2431] flex flex-col items-center justify-center gap-8 text-2xl font-medium transform transition-transform duration-300 z-40 ${
-              menuOpen ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-0 left-0 h-screen w-full flex flex-col items-center justify-center gap-8 text-2xl font-medium transform transition-transform duration-300 z-40 ${
+              menuOpen
+                ? darkMode
+                  ? "bg-white text-[#1a1a1a] translate-x-0"
+                  : "bg-[#1a1a1a] text-white translate-x-0"
+                : "-translate-x-full"
             }`}
           >
             <button onClick={() => handleMenuClick("me")}>{t("Me")}</button>
