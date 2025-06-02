@@ -124,7 +124,7 @@ export default function Header({
       >
         {" "}
         {/* القائمة الكاملة لأجهزة الديسكتوب */}
-        <div className="hidden md:flex items-center justify-between px-4 py-6">
+        <div className="hidden lg:flex items-center justify-between px-4 py-6">
           {/* اليسار */}
           <div className="w-3/12 flex justify-end items-center gap-4">
             <div className="wrapper">
