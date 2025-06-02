@@ -109,6 +109,7 @@ export default function Header({
   }, []);
 
   const direction = local == "ar" ? "ltr" : "rtl";
+
   return (
     <>
       <header
@@ -336,9 +337,15 @@ export default function Header({
           {/* الاسم */}
           <div className="relative group p-4 cursor-pointer">
             <h1
-              className={`text-5xl transition-colors duration-200 mr-8 group-hover:text-[#b33939] ${
-                darkMode ? "text-[#1a1a1a]" : "text-white"
-              }`}
+              className={`
+    text-5xl 
+    mr-8 
+    transition-colors duration-200 
+-   text-white
++   text-white max-[500px]:text-white
+    ${darkMode ? "md:text-[#1a1a1a]" : ""}
+    group-hover:text-[#b33939]
+  `}
             >
               {t("Abdullah")}
               <span className="absolute top-[-15px] left-0 w-0 h-0.5 bg-[#b33939] group-hover:w-full transition-all duration-500"></span>

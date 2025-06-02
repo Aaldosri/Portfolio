@@ -79,7 +79,7 @@ $borderW: 2px;
   &__blob {
     position: absolute;
     top: $borderW;
-    width: 100% / $numOfBlobs;
+    width: 125% / $numOfBlobs;
     height: 100%;
     background: $cyan;
     border-radius: 100%;

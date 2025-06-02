@@ -79,7 +79,7 @@ export default function Introduce({ darkMode, local }) {
               )}
             </h1>
 
-            <div className="buttons mt-10 ">
+            <div className="buttons mt-10 flex justify-center md:justify-start">
               <button
                 className="blob-btn"
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}

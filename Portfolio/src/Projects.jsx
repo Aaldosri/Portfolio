@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import img1 from "./img/pro1.png";
-import img2 from "./img/pro2w.png";
+import img2 from "./img/pro2.png";
 import img3 from "./img/pro3.png";
 import img4 from "./img/pro4.png";
 
