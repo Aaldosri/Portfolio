@@ -51,7 +51,7 @@ export default function Introduce({ darkMode, local }) {
   return (
     <>
       <section
-        className="flex mt-[200px] flex-col md:flex-row justify-center gap-50 items-start mt-10 min-h-[600px]"
+        className="flex mt-[150px] flex-col lg:flex-row justify-center gap-[30px] lg:gap-40 items-center min-h-[600px]"
         dir={direction}
       >
         <div
@@ -60,12 +60,14 @@ export default function Introduce({ darkMode, local }) {
           data-aos-delay={aosEnabled ? "200" : undefined}
         >
           {/* المحتوى الأول */}
-          <div style={{ fontFamily: "TajawalBold" }}>
-            <h1 className="text-5xl text-[#b33939] m-5">{t("Hey ! I am")}</h1>
-            <h1 className="text-5xl text-[#b33939] m-5">
+          <div style={{ fontFamily: "TajawalBold" }} className="m-5">
+            <h1 className="text-4xl md:text-5xl text-[#b33939] m-5">
+              {t("Hey ! I am")}
+            </h1>
+            <h1 className="text-4xl md:text-5xl text-[#b33939] m-5">
               {t("Abdullah Al-Dosari")}
             </h1>
-            <h1 className="text-2xl text-[#b33939] m-5 mt-10">
+            <h1 className="text-lg md:text-2xl text-[#b33939] m-5 mt-10">
               {local === "en" ? (
                 <>
                   {t(
@@ -79,7 +81,7 @@ export default function Introduce({ darkMode, local }) {
               )}
             </h1>
 
-            <div className="buttons mt-10 flex justify-center md:justify-start">
+            <div className="buttons mt-10 flex  ">
               <button
                 className="blob-btn"
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
@@ -127,8 +129,8 @@ export default function Introduce({ darkMode, local }) {
           <div className="flex justify-center">
             <div
               className="
-      w-[200px] h-[200px]  
-      sm:w-[300px] sm:h-[300px]  
+      w-[300px] h-[300px]  
+      sm:w-[400px] sm:h-[400px]  
       md:w-[500px] md:h-[500px]  
       overflow-hidden rounded-xl shadow-md
       mx-auto

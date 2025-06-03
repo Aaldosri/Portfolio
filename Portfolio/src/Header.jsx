@@ -83,9 +83,11 @@ export default function Header({
   };
 
   const handleClose = () => {
+    if (formRef.current) {
+      formRef.current.reset();
+    }
     setOpen(false);
   };
-
   function handleLanguageClick() {
     if (local == "en") {
       setLocal("ar");
@@ -388,7 +390,6 @@ export default function Header({
               />
             </div>
 
-            {/* هنا زر MUI Desktop نطبّق عليه نفس ألواننا بالقوة */}
             <Button
               onClick={handleLanguageClick}
               variant="outlined"
@@ -408,7 +409,7 @@ export default function Header({
 
           {/* ====== اليمين: الاسم ====== */}
           <h1
-            className={`text-lg font-bold ${
+            className={` text-2xl font-bold ${
               darkMode ? "text-[#1a1a1a]" : "text-white"
             }`}
           >

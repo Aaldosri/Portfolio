@@ -41,7 +41,7 @@ export default function Skills() {
   ];
   return (
     <>
-      <section className="min-h-[600px] text-center mt-20">
+      <section className="min-h-[600px] text-center mt-20 mb-10 md:mb-10">
         <div className="relative inline-block group text-center mb-20">
           <h1
             className="text-4xl mb-5 text-center text-[#b33939]"

@@ -46,7 +46,14 @@ function App() {
           }
           if (section === "me") {
             target = projectsRef.current;
-            yOffset = -820; // تعويض بسيط للمشاريع فقط
+            if (window.innerWidth <= 1024) {
+              // شاشة صغيرة
+              yOffset = -1300; // تعويض أصغر للشاشات الصغيرة (اضبط القيمة حسب تجربتك)
+            } else if (window.innerWidth <= 767) {
+              yOffset = -1150; // تعويض أصغر للشاشات الصغيرة (اضبط القيمة حسب تجربتك)
+            } else {
+              yOffset = -780; // تعويض للشاشات الكبيرة
+            }
           }
 
           if (target) {

@@ -82,11 +82,11 @@ export default function Projects({ darkMode, local }) {
         </h1>
       </div>
 
-      <div className="flex flex-col gap-20 items-center">
+      <div className="flex flex-col justify-center items-center min-h-screen gap-20">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="relative w-full max-w-[700px] mx-auto"
+            className="relative w-full max-w-[700px] mx-4 mx-auto my-6 p-10"
             data-aos={
               !isSmallScreen
                 ? local === "ar" && index % 2 === 0
@@ -102,22 +102,33 @@ export default function Projects({ darkMode, local }) {
             <img
               src={project.image}
               alt={project.title}
-              className={`w-full h-[500px] md:h-[500px] sm:h-[300px] h-[200px] object-cover rounded-xl shadow-lg transition-transform duration-500 ease-in-out relative z-0
+              className={`
+    w-full
+    max-w-[700px]
+    h-auto
+    object-cover
+    rounded-xl
+    shadow-lg
+    transition-transform
+    duration-500
+    ease-in-out
+    relative
+    z-0
     ${
       index % 2 === 0
         ? local === "ar"
-          ? "md:translate-x-[60%]"
-          : "md:translate-x-[-60%]"
+          ? "lg:translate-x-[60%]"
+          : "lg:translate-x-[-60%]"
         : local === "ar"
-        ? "md:translate-x-[-60%]"
-        : "md:translate-x-[60%]"
+        ? "lg:translate-x-[-60%]"
+        : "lg:translate-x-[60%]"
     }
   `}
             />
 
             <div
               className={`bg-white border p-6 rounded-xl shadow-2xl w-64 mx-auto relative z-10
-                md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2
+                lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2
                 -mt-12 md:mt-0
               `}
             >
