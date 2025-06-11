@@ -13,9 +13,22 @@ import Footer from "./Footer";
 // Context
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [local, setLocal] = useState("ar");
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("darkMode") === "true"
+  );
 
+  useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+    document.body.style.backgroundColor = darkMode ? "#1a1a1a" : "#ffffff";
+  }, [darkMode]);
+
+  const [local, setLocal] = useState(
+    () => localStorage.getItem("lang") || "ar"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("lang", local);
+  }, [local]);
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
   const meRef = useRef(null);

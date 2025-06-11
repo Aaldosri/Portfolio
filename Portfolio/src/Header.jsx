@@ -143,7 +143,7 @@ export default function Header({
             </div>
 
             <Button onClick={handleLanguageClick} variant="outlined">
-              {local === "ar" ? "AR" : "EN"}
+              {local === "ar" ? "EN" : "AR"}
             </Button>
           </div>
 
