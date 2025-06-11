@@ -22,30 +22,30 @@ const projects = [
   {
     title: "HEALTHY",
     image: img1,
-    site: "https://example.com",
+    site: "https://polite-hummingbird-584dad.netlify.app/",
     github: "https://github.com",
   },
   {
     title: "Weather",
     image: img2,
-    site: "https://example.com",
+    site: "https://zippy-pie-11a947.netlify.app/",
     github: "https://github.com",
   },
   {
     title: "Adventure Tours",
     image: img3,
-    site: "https://example.com",
+    site: "https://extraordinary-zuccutto-ae3013.netlify.app/",
     github: "https://github.com",
   },
   {
     title: "مواقيت الصلاة",
     image: img4,
-    site: "https://example.com",
+    site: "https://sparkly-creponne-604793.netlify.app/",
     github: "https://github.com",
   },
 ];
 
-export default function Projects({ darkMode, local }) {
+export default function Projects({ local }) {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {

@@ -110,7 +110,7 @@ export default function Introduce({ darkMode, local }) {
                 <i className="fab fa-linkedin"></i>
               </a>
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Aaldosri"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-5xl text-[#333] hover:text-[#6e5494] transition-colors duration-300"

@@ -82,7 +82,7 @@ function App() {
       </div>
 
       <div ref={projectsRef}>
-        <Projects darkMode={darkMode} local={local} />
+        <Projects local={local} />
       </div>
 
       <div ref={skillsRef}>
