@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import "./Cv.scss";
 import { dir } from "i18next";
 import { useEffect, useState } from "react";
-import CV from "../public/cv.pdf";
 
 // Translate
 import { useTranslation } from "react-i18next";
@@ -84,7 +83,7 @@ export default function Introduce({ darkMode, local }) {
 
             <div className="buttons mt-10 flex  ">
               <a
-                href={CV}
+                href="/cv.pdf"
                 download
                 className="blob-btn"
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
