@@ -31,6 +31,6 @@ This collection showcases my best front-end projects focused on building modern,
 
 - [GitHub](https://github.com/Aaldosri)
 
-- [![LinkedIn](https://www.linkedin.com/in/abdullah-al-dosary-662a6523b/)
+- [LinkedIn](https://www.linkedin.com/in/abdullah-al-dosary-662a6523b/)
 
 - Email: a.aldosari.sa@gmail.com
