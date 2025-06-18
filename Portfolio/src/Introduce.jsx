@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import "./Cv.scss";
 import { dir } from "i18next";
 import { useEffect, useState } from "react";
-import CV from "./cv.pdf";
+import CV from "../public/cv.pdf";
 
 // Translate
 import { useTranslation } from "react-i18next";
