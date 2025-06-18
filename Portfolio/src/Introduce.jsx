@@ -51,7 +51,7 @@ export default function Introduce({ darkMode, local }) {
   return (
     <>
       <section
-        className="flex mt-[150px] flex-col lg:flex-row justify-center gap-[30px] lg:gap-40 items-center min-h-[600px]"
+        className="flex mt-[150px] flex-col xl:flex-row lg:p-5 justify-center gap-[30px] lg:gap-40 items-center min-h-[600px]"
         dir={direction}
       >
         <div

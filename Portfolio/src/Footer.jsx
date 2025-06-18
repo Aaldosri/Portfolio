@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <>
       <div className="bg-[#b33939] p-4">
-        <h1 className="text-white text-center">{t("Abdullah @ 2025")}</h1>
+        <h1 className="text-white text-center">{t("Abdullah | 2025")}</h1>
       </div>
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

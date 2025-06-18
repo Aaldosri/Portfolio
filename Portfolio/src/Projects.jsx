@@ -82,7 +82,7 @@ export default function Projects({ local }) {
         </h1>
       </div>
 
-      <div className="flex flex-col justify-center items-center min-h-screen gap-20">
+      <div className="xl:flex xl:flex-col xl:justify-center xl:items-center xl:min-h-screen xl:gap-20">
         {projects.map((project, index) => (
           <div
             key={index}
@@ -117,18 +117,18 @@ export default function Projects({ local }) {
     ${
       index % 2 === 0
         ? local === "ar"
-          ? "lg:translate-x-[60%]"
-          : "lg:translate-x-[-60%]"
+          ? "xl:translate-x-[60%]"
+          : "xl:translate-x-[-60%]"
         : local === "ar"
-        ? "lg:translate-x-[-60%]"
-        : "lg:translate-x-[60%]"
+        ? "xl:translate-x-[-60%]"
+        : "xl:translate-x-[60%]"
     }
   `}
             />
 
             <div
               className={`bg-white border p-6 rounded-xl shadow-2xl w-64 mx-auto relative z-10
-                lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2
+                xl:absolute xl:top-1/2 xl:left-1/2 xl:transform xl:-translate-x-1/2 xl:-translate-y-1/2
                 -mt-12 md:mt-0
               `}
             >
