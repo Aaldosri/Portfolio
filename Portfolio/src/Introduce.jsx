@@ -82,7 +82,9 @@ export default function Introduce({ darkMode, local }) {
             </h1>
 
             <div className="buttons mt-10 flex  ">
-              <button
+              <a
+                href="/cv.pdf"
+                download
                 className="blob-btn"
                 style={{ "--btn-bg": darkMode ? "#ffffff" : "#1a1a1a" }}
               >
@@ -95,7 +97,7 @@ export default function Introduce({ darkMode, local }) {
                     <span className="blob-btn__blob"></span>
                   </span>
                 </span>
-              </button>
+              </a>
               <br />
             </div>
 
