@@ -62,10 +62,7 @@ export default function Introduce({ darkMode, local }) {
           {/* المحتوى الأول */}
           <div style={{ fontFamily: "TajawalBold" }} className="m-5">
             <h1 className="text-4xl md:text-5xl text-[#b33939] m-5">
-              {t("Hey ! I am")}
-            </h1>
-            <h1 className="text-4xl md:text-5xl text-[#b33939] m-5">
-              {t("Abdullah Al-Dosari")}
+              {t("Abdullah Aldosari")}
             </h1>
             <h1 className="text-lg md:text-2xl text-[#b33939] m-5 mt-10">
               {local === "en" ? (
