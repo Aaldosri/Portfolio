@@ -22,25 +22,25 @@ const projects = [
   {
     title: "HEALTHY",
     image: img1,
-    site: "https://marvelous-liger-3f7fae.netlify.app/",
+    site: "healthy-r.netlify.app",
     github: "https://github.com/Aaldosri/HEALTHY",
   },
   {
     title: "Weather",
     image: img2,
-    site: "https://wondrous-kangaroo-670a1d.netlify.app/",
+    site: "weather-ksa.netlify.app",
     github: "https://github.com/Aaldosri/Weather",
   },
   {
     title: "Adventure Tours",
     image: img3,
-    site: "https://storied-choux-cd5a1b.netlify.app/",
+    site: "adventure-tours-w.netlify.app",
     github: "https://github.com/Aaldosri/Adventures-Tours",
   },
   {
     title: "مواقيت الصلاة",
     image: img4,
-    site: "https://famous-cupcake-12f262.netlify.app/",
+    site: "prayer-times-sa.netlify.app",
     github: "https://github.com/Aaldosri/Prayers",
   },
 ];
