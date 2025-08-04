@@ -56,6 +56,7 @@ export default function Header({
       );
 
     e.target.reset(); // لمسح الحقول بعد الإرسال
+    setOpen(false);
   }
 
   const { t, i18n } = useTranslation();
