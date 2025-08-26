@@ -32,7 +32,7 @@ export default function () {
 
         <div className="content-center">
           <h1>عبدالله الدوسري</h1>
-          <h1>تحويل أفكارك إلى تجربة رقمية استثنائية</h1>
+          <h3>تحويل أفكارك إلى تجربة رقمية استثنائية</h3>
           <div>
             <button>شاهد مشاريعي</button>
             <button>للتواصل</button>
