@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-export default function () {
+import { useState, useEffect } from "react";
+import Particle from "./../Particles/ParticlesStar";
+export default function MainPage() {
   const ELEMENTS = [
     { id: 1, emoji: "🌐", top: "10%", left: "5%", dx: 10, dy: 10 },
     { id: 2, emoji: "💻", top: "30%", right: "10%", dx: 15, dy: 5 },
@@ -9,6 +10,27 @@ export default function () {
     { id: 4, emoji: "⚛️", bottom: "25%", right: "15%", dx: 10, dy: 10 },
   ];
 
+  const [stars, setStars] = useState([]);
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const id = Date.now() + Math.random();
+
+      setStars((prev) => [...prev, { id, x, y }]);
+
+      setTimeout(() => {
+        setStars((prev) => prev.filter((star) => star.id !== id));
+      }, 1500);
+    };
+
+    document.body.addEventListener("click", handleClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, []);
   return (
     <>
       <div className="fullscreen-bg">
@@ -38,6 +60,16 @@ export default function () {
             <button>للتواصل</button>
           </div>
         </div>
+        <div className="fixed inset-0 bg-black">
+          {stars.map((star) => (
+            <div
+              key={star.id}
+              className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+              style={{ left: star.x, top: star.y }}
+            />
+          ))}
+        </div>
+        <Particle />
       </div>
     </>
   );
