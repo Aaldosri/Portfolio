@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Stars from "../Animations/Stars";
-import Particles from "../Animations/Particles";
+import Stars from "../Components/Animations/Stars";
+import Particles from "../Components/Animations/Particles";
 import Button from "@mui/material/Button";
 import { motion } from "framer-motion";
 
-import "./MainPage.css";
+// import "./MainPage.css";
 
 export default function MainPage() {
   return (
@@ -64,7 +64,7 @@ export default function MainPage() {
       </div>
       {/* Waves */}
       {/* <div class="blob"></div> */}
-      <div class="wave"></div>
+      {/* <div class="wave"></div> */}
       {/* ==== Waves ==== */}
       {/* COMPONENT IN THE MAIN PAGE */}
       <Stars />

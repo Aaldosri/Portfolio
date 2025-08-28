@@ -1,11 +1,8 @@
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
-import React from "react"; // أضف هذا إذا ظهرت لك المشكلة
+import React from "react";
 
 import "./App.css";
-import Header from "../Components/Header/Header";
-import MainPage from "../Components/MainPage/MainPage";
+import Header from "../Pages/Header";
+import MainPage from "../Pages/MainPage";
 
 function App() {
   return (
