@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: TajawalMedium;
+  src: url(fonts/Tajawal-Regular.ttf);
+}
+
+@font-face {
+  font-family: TajawalRegular;
+  src: url(fonts/Tajawal-Medium.ttf);
+}
+
+@font-face {
+  font-family: TajawalBold;
+  src: url(fonts/Tajawal-Bold.ttf);
+}
+
 body {
   background-color: #1a1a1a;
   position: relative;
@@ -9,6 +24,7 @@ body {
   -webkit-overflow-x: hidden;
   padding: 0;
   margin: 0;
+  font-family: TajawalMedium;
 }
 
 /* الحاوية */
