@@ -9,10 +9,10 @@ export default function SectionTitle(props) {
         initial={{ x: 650 }}
         whileInView={{ x: 0 }}
         transition={{ duration: 0.6, type: "spring" }}
-        className="text-primary-600 p-6 noselect max-w-[800px] mx-auto "
+        className="text-primary-600 p-6 noselect max-w-[1000px] mx-auto "
       >
         <span
-          className="opacity-50"
+          className="opacity-50 text-white"
           style={{
             textTransform: "uppercase",
             fontWeight: "600",
@@ -20,7 +20,7 @@ export default function SectionTitle(props) {
         >
           {subtitle}
         </span>
-        <h2 className="tracking-wider  text-7xl sm:text-8xl md:text-9xl">
+        <h2 className="tracking-wider text-white text-7xl sm:text-8xl md:text-6xl">
           {title.split("").map((char, index) => {
             if (char === " ") {
               return " ";

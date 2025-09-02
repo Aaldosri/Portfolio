@@ -15,6 +15,7 @@ export default function MainPage() {
         <div className="content-center">
           {/* العنوان الرئيسي يدخل من الأسفل */}
           <motion.h1
+            className="text-7xl"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -23,6 +24,7 @@ export default function MainPage() {
           </motion.h1>
 
           <motion.h3
+            className="text-5xl m-10"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -62,6 +64,7 @@ export default function MainPage() {
             </motion.div>
           </div>
         </div>
+        <Particles />
       </div>
       {/* Waves */}
       {/* <div class="blob"></div> */}
@@ -69,7 +72,6 @@ export default function MainPage() {
       {/* ==== Waves ==== */}
       {/* COMPONENT IN THE MAIN PAGE */}
       <Stars />
-      <Particles />
 
       <StarMake />
     </>

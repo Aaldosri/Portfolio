@@ -36,7 +36,7 @@ export default function Particles() {
     {
       id: 3,
       emoji: <Star size={60} color="gray" style={{ opacity: 0.2 }} />,
-      bottom: "15%",
+      bottom: "20%",
       left: "20%",
       dx: 5,
       dy: 15,
@@ -45,7 +45,7 @@ export default function Particles() {
     {
       id: 4,
       emoji: <Rocket size={60} color="gray" style={{ opacity: 0.2 }} />,
-      bottom: "25%",
+      bottom: "30%",
       right: "15%",
       dx: 10,
       dy: 10,
