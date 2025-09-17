@@ -19,9 +19,12 @@ export default function Projects() {
             <div className="w-full xl:w-[60%] h-full">
               <ProjectCards />
             </div>
-            {/* <div className="absolute w-full h-full top-[-25%] right-[-75%] sm:right-[-50%]">
+            <div
+              className="absolute top-0 overflow-visible transform scale-x-[-1]"
+              style={{ right: "850px", top: "-150px" }}
+            >
               <Astronaut />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

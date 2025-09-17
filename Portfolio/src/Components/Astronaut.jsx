@@ -31,7 +31,7 @@ const Astronaut = () => {
       <div className="w-full h-full astro-path ">
         {/* <BgQuote text="this is not me" /> */}
         <svg
-          className=" w-[20%] h-[20%] rotate-[-35deg] "
+          className="w-[860px] h-[750px] rotate-[-35deg]"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           width="860"
