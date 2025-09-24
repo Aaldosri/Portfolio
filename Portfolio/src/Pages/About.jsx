@@ -2,20 +2,11 @@ import React from "react";
 import SectionTitle from "../Components/SectionTitle";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { motion } from "framer-motion";
+import introduction from "../Constants/Constants";
 
 import Features from "../Components/Features";
 
 export default function About() {
-  const introduction = {
-    text: [
-      "  مطور واجهات أمامية شغوف بالتعلم وتجربة تقنيات جديدة في تطوير الويب. ",
-
-      "اعمل على دمج الإبداع مع الكود، وأسعى دائمًا لتحسين تجربة المستخدم وجعل التطبيقات أكثر تفاعلية.",
-
-      "أركز على بناء مواقع متجاوبة مع مختلف الأجهزة، بتصاميم عصرية وأداء عالي يضيف قيمة حقيقية للمستخدم.",
-    ],
-  };
-
   return (
     <div dir="rtl">
       <SectionTitle title="نبذة عني" subtitle="مقدمة" />

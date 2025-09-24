@@ -122,6 +122,51 @@ export default function ProjectCards() {
                   </div>
                 </div>
               </motion.li>
+              // <motion.li
+              //   key={project.id}
+              //   animate={{
+              //     top: index * -cardsOffset,
+              //     scale: 1 - index * scaleFactor,
+              //     zIndex: projectsImages.length - index,
+              //     y: 0,
+              //   }}
+              //   transition={{ duration: 0.5, type: "spring" }}
+              //   drag={canDrag ? "y" : false}
+              //   dragConstraints={{ top: 10, bottom: 10 }}
+              //   onDragEnd={() => moveToEnd(index)}
+              //   className="absolute w-full h-full bg-primary-400 origin-[top-center] list-none rounded-xl flex flex-col overflow-hidden"
+              // >
+              //   {/* الصورة */}
+              //   <div
+              //     className="w-full h-full bg-cover bg-center"
+              //     style={{ backgroundImage: `url(${project.image})` }}
+              //   ></div>
+
+              //   {/* البيانات تحت الصورة */}
+              //   <div className="bg-black/70 text-center py-4">
+              //     <h3 className="text-white text-xl font-semibold mb-3">
+              //       {project.name}
+              //     </h3>
+              //     <div className="flex justify-center gap-4">
+              //       <a
+              //         href={project.source_code_link}
+              //         target="_blank"
+              //         rel="noopener noreferrer"
+              //         className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition flex items-center gap-2"
+              //       >
+              //         <FaGithub size={20} /> GitHub
+              //       </a>
+              //       <a
+              //         href={project.demo_link}
+              //         target="_blank"
+              //         rel="noopener noreferrer"
+              //         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition"
+              //       >
+              //         Visit Site
+              //       </a>
+              //     </div>
+              //   </div>
+              // </motion.li>
             );
           })}
         </motion.ul>
