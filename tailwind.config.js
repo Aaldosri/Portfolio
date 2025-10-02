@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}", // عدّل حسب مسارات ملفاتك
-  ],
+export default {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       screens: {
@@ -15,6 +13,6 @@ module.exports = {
       },
     },
   },
-  darkMode: "class", // إذا كنت تستخدم الوضع الداكن
+  darkMode: "class",
   plugins: [],
 };

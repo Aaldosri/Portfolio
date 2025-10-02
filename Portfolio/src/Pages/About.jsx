@@ -2,7 +2,7 @@ import React from "react";
 import SectionTitle from "../Components/SectionTitle";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { motion } from "framer-motion";
-import introduction from "../Constants/Constants";
+import { introduction } from "../Constants/Constants";
 
 import Features from "../Components/Features";
 
@@ -30,7 +30,7 @@ export default function About() {
               }}
               className="text-grayscale-50  text-2xl p-6 text-right text-white flex flex-col gap-6"
             >
-              <span className="text-primary-400 ">{introduction.text[0]}</span>
+              <span>{introduction.text[0]}</span>
               <span>{introduction.text[1]}</span>
               <span>{introduction.text[2]}</span>
               <span>{introduction.text[3]}</span>

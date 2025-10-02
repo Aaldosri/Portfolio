@@ -5,6 +5,7 @@ import Header from "../Pages/Header";
 import MainPage from "../Pages/MainPage";
 import About from "../Pages/About";
 import Projects from "../Pages/Projects";
+import Skills from "../Pages/Skills";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <About />
 
       <Projects />
+
+      <Skills />
     </>
   );
 }
