@@ -12,6 +12,18 @@
   --color-primary-800: #720000;
   --color-primary-900: #500000;
   --color-primary-950: #2c0000;
+
+  --color-grayscale-50: #ffffff;
+  --color-grayscale-100: #efefef;
+  --color-grayscale-200: #dcdcdc;
+  --color-grayscale-300: #bdbdbd;
+  --color-grayscale-400: #989898;
+  --color-grayscale-500: #7c7c7c;
+  --color-grayscale-600: #656565;
+  --color-grayscale-700: #515152;
+  --color-grayscale-800: #464646;
+  --color-grayscale-900: #292929;
+  --color-grayscale-950: #16161b;
 }
 
 @font-face {
@@ -37,6 +49,11 @@ body {
   padding: 0;
   margin: 0;
   font-family: TajawalMedium;
+}
+
+.icon-big svg {
+  width: 70px !important;
+  height: 70px !important;
 }
 
 /* الحاوية */

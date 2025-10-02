@@ -4,6 +4,9 @@ export default defineConfig({
   content: [
     "./src/**/*.{js,ts,jsx,tsx}", // يشمل كل الملفات داخل src مهما كان عمقها
   ],
+  optimizeDeps: {
+    exclude: ["object-inspect"],
+  },
 
   plugins: [tailwindcss()],
 });
