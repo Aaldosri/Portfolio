@@ -11,7 +11,7 @@ export default function () {
           <m.div
             initial={{ scale: 0.8 }}
             animate={{
-              rotate: [0, 10, 0],
+              rotate: [0, -10, 0],
             }}
             transition={{
               duration: 1,
@@ -32,7 +32,7 @@ export default function () {
               <span
                 className="text-xl"
                 style={{
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: "TajawalRegular",
                   fontWeight: "bold",
                 }}
               >
@@ -41,8 +41,8 @@ export default function () {
               <span
                 className="text-center bg-primary-600 text-grayscale-50 rounded-xl text-sm p-4"
                 style={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: "400",
+                  fontFamily: "TajawalRegular",
+                  fontWeight: "500",
                 }}
               >
                 {skill.description}

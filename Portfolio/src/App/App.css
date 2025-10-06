@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
+body.dark {
+  background-color: black;
+}
+
+.dark .App {
+  color: white;
+}
+.dark button {
+  color: white;
+}
+
+button {
+  font-size: 3rem;
+}
+
 @theme {
-  --color-primary-50: #ffecec;
+  /* --color-primary-50: #ffecec;
   --color-primary-100: #ffd1d1;
   --color-primary-200: #ffa7a7;
   --color-primary-300: #ff6d6d;
@@ -11,7 +26,18 @@
   --color-primary-700: #940000;
   --color-primary-800: #720000;
   --color-primary-900: #500000;
-  --color-primary-950: #2c0000;
+  --color-primary-950: #2c0000; */
+  --color-primary-50: #f9e6e6;
+  --color-primary-100: #f2c7c7;
+  --color-primary-200: #e99e9e;
+  --color-primary-300: #dd6b6b;
+  --color-primary-400: #d13232;
+  --color-primary-500: #b71f1f;
+  --color-primary-600: #921919;
+  --color-primary-700: #701313;
+  --color-primary-800: #500d0d;
+  --color-primary-900: #320808;
+  --color-primary-950: #1a0303;
 
   --color-grayscale-50: #ffffff;
   --color-grayscale-100: #efefef;

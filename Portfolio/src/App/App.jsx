@@ -7,21 +7,24 @@ import About from "../Pages/About";
 import Projects from "../Pages/Projects";
 import Skills from "../Pages/Skills";
 import Contact from "../Pages/Contact";
+import { DarkModeProvider } from "../Components/Contexts/DarkModeContext";
 
 function App() {
   return (
     <>
-      <Header />
+      <DarkModeProvider>
+        <Header />
 
-      <MainPage />
+        <MainPage />
 
-      <About />
+        <About />
 
-      <Projects />
+        <Projects />
 
-      <Skills />
+        <Skills />
 
-      <Contact />
+        <Contact />
+      </DarkModeProvider>
     </>
   );
 }

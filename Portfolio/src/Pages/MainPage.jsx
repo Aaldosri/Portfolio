@@ -4,7 +4,6 @@ import Stars from "../Components/Animations/Stars";
 import Particles from "../Components/Animations/Particles";
 import Button from "@mui/material/Button";
 import { motion } from "framer-motion";
-import StarMake from "../Components/Animations/SatrMake";
 
 // import "./MainPage.css";
 
@@ -72,8 +71,6 @@ export default function MainPage() {
       {/* ==== Waves ==== */}
       {/* COMPONENT IN THE MAIN PAGE */}
       <Stars />
-
-      <StarMake />
     </>
   );
 }

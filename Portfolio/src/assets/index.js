@@ -46,7 +46,7 @@ import jsCertificate from "./certificates/JavaScript_Codecademy_Certificate.png"
 import reactCertificate from "./certificates/React_Codecademy_Certificate.png";
 import webflowCertificate from "./certificates/Webflow_101_Certificate.png";
 
-import globeTexture from "./globe.svg";
+import globeTexture from "./globe_red.png";
 
 export {
   astronaut,

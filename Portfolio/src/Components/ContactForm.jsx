@@ -45,25 +45,25 @@ export default function ContactForm() {
           style={{ fontFamily: "Morganite Bold, sans-serif" }}
           className="message text-5xl bg-primary-600 p-2 rounded-xl text-grayscale-200 text-center rounded-br-[0%] relative shadow-2xl"
         >
-          <Typewriter words={["Got ideas?", "Let's team up!"]} loop={true} />
+          <Typewriter words={["عندك أفكار؟", "!خلينا نتعاون"]} loop={true} />
           &nbsp;
         </h2>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center mt-15" dir="rtl">
         <form
           id="contact_form"
           ref={form}
           method="POST"
           target="_blank"
           onSubmit={sendEmail}
-          style={{ fontFamily: "Poppins, sans-serif" }}
+          style={{ fontFamily: "TajawalRegular" }}
           className="w-[80%] h-full flex flex-col gap-4 pt-4 text-grayscale-200"
         >
           <div className="w-full flex flex-col">
-            <label htmlFor="firstname">First Name</label>
+            <label htmlFor="firstname">الاسم</label>
             <input
               className="p-[0.5em] rounded-xl text-black bg-white"
-              placeholder="Enter your First Name"
+              placeholder="اكتب اسمك"
               id="firstname"
               type="text"
               name="from_name"
@@ -71,21 +71,10 @@ export default function ContactForm() {
             />
           </div>
           <div className="w-full flex flex-col">
-            <label htmlFor="lastname">Last Name</label>
+            <label htmlFor="email">الايميل</label>
             <input
               className="p-[0.5em] rounded-xl text-black bg-white"
-              placeholder="Enter your Last Name"
-              id="lastname"
-              type="text"
-              name="from_last"
-              required
-            />
-          </div>
-          <div className="w-full flex flex-col">
-            <label htmlFor="email">E-mail</label>
-            <input
-              className="p-[0.5em] rounded-xl text-black bg-white"
-              placeholder="Enter your E-mail"
+              placeholder="اكتب ايميلك"
               id="email"
               type="email"
               name="from_email"
@@ -93,10 +82,10 @@ export default function ContactForm() {
             />
           </div>
           <div className="w-full flex flex-col">
-            <label>Message</label>
+            <label>الرسالة</label>
             <textarea
               className="p-[0.5em] rounded-xl text-black bg-white"
-              placeholder="Enter your message..."
+              placeholder="اكتب رسالتك ..."
               name="message"
               required
             ></textarea>

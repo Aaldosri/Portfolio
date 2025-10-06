@@ -3,21 +3,14 @@ import React from "react";
 // External Libraries
 
 import Button from "@mui/material/Button";
+import DarkMode from "../Components/DarkMode";
 
 export default function Header() {
   return (
     <nav className="font-semibold text-lg">
       <div className="div-header">
         <div>
-          <div className="wrapper">
-            <input
-              type="checkbox"
-              name="checkbox"
-              className="switch"
-              // onChange={handleDarkMode}
-              // checked={darkMode}
-            />
-          </div>
+          <DarkMode />
         </div>
         <div>
           <ul
@@ -52,7 +45,7 @@ export default function Header() {
         </div>
 
         <div>
-          <Button variant="outlined">EN</Button>
+          <h1 className="text-white text-3xl">عبدالله الدوسري</h1>
         </div>
       </div>
     </nav>

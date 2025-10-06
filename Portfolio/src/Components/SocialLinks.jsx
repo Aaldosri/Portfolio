@@ -4,7 +4,7 @@ import { icons } from "../Constants/Constants";
 
 export default function SocialLinks() {
   return (
-    <div className="w-full h-[100px] bg-grayscale-950 flex justify-center items-center gap-3 p-6">
+    <div className="w-full h-[100px] bg-[#1a1a1a] flex justify-center items-center gap-3 p-6">
       <a href="https://github.com/valeriusec" target="_blank">
         <FontAwesomeIcon
           className="text-3xl text-grayscale-50 hover:text-primary-400 hover:scale-[1.1] transition-all duration-75"

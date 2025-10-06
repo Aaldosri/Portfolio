@@ -21,7 +21,7 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faWindowRestore}
             />
-            <span>Custom Web Development</span>
+            <span>تصميم واجهات جذابة وسهلة الاستخدام</span>
           </div>
         </m.div>
         <m.div
@@ -35,7 +35,7 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faReact}
             />
-            <span>React Web Development</span>
+            <span>تحسين أداء الموقع وتجربة المستخدم</span>
           </div>
         </m.div>
         <m.div
@@ -49,7 +49,7 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faDiceD6}
             />
-            <span>Webflow/Framer Website</span>
+            <span>حلول مبتكرة لتلبية احتياجات كل مشروع</span>
           </div>
         </m.div>
         <m.div
@@ -57,14 +57,14 @@ export default function ContactServices() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
         >
-          <div className="w-full h-[50px] text-grayscale-100 flex items-center gap-4">
+          {/* <div className="w-full h-[50px] text-grayscale-100 flex items-center gap-4">
             <FontAwesomeIcon
               style={{ width: "50px", height: "50px" }}
               className="w-[50px] h-full text-primary-400"
               icon={icons.faBagShopping}
             />
-            <span>Shopify Store Development</span>
-          </div>
+            <span>تفاعل سلس وتجربة مستخدم مميزة</span>
+          </div> */}
         </m.div>
       </LazyMotion>
     </div>

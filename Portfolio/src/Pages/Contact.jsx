@@ -34,9 +34,9 @@ export default function Contact() {
       </div>
       <div className="w-full flex flex-col">
         <SocialLinks />
-        <div className="bg-grayscale-950 flex justify-center pb-4 text-grayscale-400">
+        <div className="bg-[#1a1a1a] flex justify-center pb-4 text-grayscale-400">
           <span>
-            صنع بكل حب <em>عبدالله الدوسري</em> | 2025
+            صنع بالكثير من الحنكة <em>عبدالله الدوسري</em> | 2025
           </span>
         </div>
       </div>

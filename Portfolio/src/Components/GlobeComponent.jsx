@@ -22,7 +22,10 @@ export default function GlobeComponent() {
   useEffect(() => {
     globeEl.current.controls().autoRotate = false;
     globeEl.current.controls().autoRotateSpeed = 0.6;
-    globeEl.current.pointOfView({ lat: 48.0, lng: 11.0, altitude: 3 }, 4000);
+    globeEl.current.pointOfView(
+      { lat: 24.774265, lng: 46.738586, altitude: 3 },
+      4000
+    );
     globeEl.current.controls().enableZoom = false;
   }, []);
 
@@ -44,7 +47,7 @@ export default function GlobeComponent() {
           el.onclick = () => console.info(d);
           return el;
         }}
-        atmosphereColor="#29c27f"
+        atmosphereColor="#ff0000"
         width={isMobile ? 400 : 1000}
         height={isMobile ? 400 : 1000}
       />
