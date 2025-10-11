@@ -3,7 +3,11 @@ import { m, LazyMotion, domAnimation } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icons } from "../Constants/Constants";
 
+import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
+
 export default function ContactServices() {
+  const { darkMode, toggleDarkMode } = useDarkModeContext();
+
   return (
     <div
       className="w-full sm:w-[40%] h-full flex flex-col gap-4 justify-center"
@@ -21,7 +25,9 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faWindowRestore}
             />
-            <span>تصميم واجهات جذابة وسهلة الاستخدام</span>
+            <span className={`${darkMode ? "text-white" : "text-black"}`}>
+              تصميم واجهات جذابة وسهلة الاستخدام
+            </span>
           </div>
         </m.div>
         <m.div
@@ -35,7 +41,9 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faReact}
             />
-            <span>تحسين أداء الموقع وتجربة المستخدم</span>
+            <span className={`${darkMode ? "text-white" : "text-black"}`}>
+              تحسين أداء الموقع وتجربة المستخدم
+            </span>
           </div>
         </m.div>
         <m.div
@@ -49,7 +57,9 @@ export default function ContactServices() {
               className="w-[50px] h-full text-primary-400"
               icon={icons.faDiceD6}
             />
-            <span>حلول مبتكرة لتلبية احتياجات كل مشروع</span>
+            <span className={`${darkMode ? "text-white" : "text-black"}`}>
+              حلول مبتكرة لتلبية احتياجات كل مشروع
+            </span>
           </div>
         </m.div>
         <m.div

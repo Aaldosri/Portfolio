@@ -1,7 +1,11 @@
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import React from "react";
 
+import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
+
 export default function SectionTitle(props) {
+  const { darkMode, toggleDarkMode } = useDarkModeContext();
+
   const { title, subtitle } = props;
   return (
     <LazyMotion features={domAnimation} strict>
@@ -12,7 +16,7 @@ export default function SectionTitle(props) {
         className="text-primary-600 p-6 noselect max-w-[1000px] mx-auto "
       >
         <span
-          className="opacity-50 text-white"
+          className={`opacity-50  ${darkMode ? "text-white" : "text-black"}`}
           style={{
             textTransform: "uppercase",
             fontWeight: "600",
@@ -20,7 +24,11 @@ export default function SectionTitle(props) {
         >
           {subtitle}
         </span>
-        <h2 className="tracking-wider text-white text-7xl sm:text-8xl md:text-6xl">
+        <h2
+          className={`tracking-wider text-7xl sm:text-8xl md:text-6xl ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
           {title.split("").map((char, index) => {
             if (char === " ") {
               return " ";

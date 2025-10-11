@@ -6,10 +6,16 @@ import { introduction } from "../Constants/Constants";
 
 import Features from "../Components/Features";
 
-export default function About() {
+import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
+
+export default function About({ ref }) {
+  const { darkMode } = useDarkModeContext();
+
   return (
-    <div dir="rtl">
-      <SectionTitle title="نبذة عني" subtitle="مقدمة" />
+    <div dir="rtl" ref={ref}>
+      <div className="overflow-hidden">
+        <SectionTitle title="نبذة عني" subtitle="مقدمة" />
+      </div>
 
       <div className="flex justify-around p-6 noselect max-w-[1400px] mx-auto ">
         <motion.div
@@ -30,10 +36,18 @@ export default function About() {
               }}
               className="text-grayscale-50  text-2xl p-6 text-right text-white flex flex-col gap-6"
             >
-              <span>{introduction.text[0]}</span>
-              <span>{introduction.text[1]}</span>
-              <span>{introduction.text[2]}</span>
-              <span>{introduction.text[3]}</span>
+              <span className={`${darkMode ? "text-white" : "text-black"}`}>
+                {introduction.text[0]}
+              </span>
+              <span className={`${darkMode ? "text-white" : "text-black"}`}>
+                {introduction.text[1]}
+              </span>
+              <span className={`${darkMode ? "text-white" : "text-black"}`}>
+                {introduction.text[2]}
+              </span>
+              <span className={`${darkMode ? "text-white" : "text-black"}`}>
+                {introduction.text[3]}
+              </span>
             </m.p>
           </LazyMotion>
         </motion.div>

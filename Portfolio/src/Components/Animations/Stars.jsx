@@ -36,11 +36,15 @@
 
 import React, { useEffect } from "react";
 
-export default function Starfield(props) {
+import { useDarkModeContext } from "../Contexts/DarkModeContext";
+
+export default function Stars(props) {
+  const { darkMode, toggleDarkMode } = useDarkModeContext();
+
   const {
     speedFactor = 0.05,
     backgroundColor = "black",
-    starColor = [255, 255, 255],
+    starColor = darkMode ? [255, 255, 255] : [0, 0, 0],
     starCount = 5000,
   } = props;
 

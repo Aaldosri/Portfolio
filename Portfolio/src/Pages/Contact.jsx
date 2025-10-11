@@ -7,14 +7,14 @@ import ContactForm from "../Components/ContactForm";
 import GlobeComponent from "../Components/GlobeComponent";
 import SocialLinks from "../Components/SocialLinks";
 
-export default function Contact() {
+export default function Contact({ ref }) {
   return (
     <div
-      id="contact"
+      ref={ref}
       className="w-full overflow-hidden-web flex flex-col items-center"
     >
       <div className="w-full min-h-[800px] flex flex-col xl:w-[70%]">
-        <div className="w-full" dir="rtl">
+        <div className="w-full overflow-hidden" dir="rtl">
           <SectionTitle title="للتواصل" subtitle="أرسل رسالتك" />
         </div>
         <div className="w-full flex justify-center items-center">

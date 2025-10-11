@@ -6,30 +6,29 @@ const DarkModeContext = createContext();
 
 // المزوّد (Provider)
 export function DarkModeProvider({ children }) {
-  const [darkMode, setDarkMode] = useState(() => {
-    // التحقق من الثيم المحفوظ أو النظام
-    return (
+  const [darkMode, setDarkMode] = useState(
+    () =>
       localStorage.getItem("theme") === "dark" ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches &&
-        !localStorage.getItem("theme"))
-    );
-  });
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
 
+  // حفظ الثيم وتغيير الخلفية على body
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
     localStorage.setItem("theme", darkMode ? "dark" : "light");
+    document.body.style.backgroundColor = darkMode ? "#000000" : "#e9ecef";
   }, [darkMode]);
 
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode, setDarkMode }}>
       {children}
     </DarkModeContext.Provider>
   );
 }
 
-// هوك مخصص لاستخدام السياق بسهولة
-export function useDarkMode() {
+// هوك للوصول للسياق
+export function useDarkModeContext() {
   return useContext(DarkModeContext);
 }

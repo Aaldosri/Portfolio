@@ -5,16 +5,18 @@ import Particles from "../Components/Animations/Particles";
 import Button from "@mui/material/Button";
 import { motion } from "framer-motion";
 
-// import "./MainPage.css";
+import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
 
 export default function MainPage() {
+  const { darkMode, toggleDarkMode } = useDarkModeContext();
+
   return (
     <>
       <div className="fullscreen-bg">
         <div className="content-center">
           {/* العنوان الرئيسي يدخل من الأسفل */}
           <motion.h1
-            className="text-7xl"
+            className={`text-7xl ${darkMode ? "text-white" : "text-black"}`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -23,7 +25,9 @@ export default function MainPage() {
           </motion.h1>
 
           <motion.h3
-            className="text-5xl m-10"
+            className={`text-5xl m-10 ${
+              darkMode ? "text-white" : "text-black"
+            }`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -39,7 +43,11 @@ export default function MainPage() {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <Button
-                style={{ color: "white" }}
+                style={{
+                  fontFamily: "TajawalRegular",
+                  color: "white",
+                  backgroundColor: "rgba(128, 128, 128, 0.2)", // رمادي شفاف جدًا
+                }}
                 variant="contained"
                 size="large"
               >
@@ -54,7 +62,11 @@ export default function MainPage() {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
               <Button
-                style={{ color: "white" }}
+                style={{
+                  fontFamily: "TajawalRegular",
+                  color: "black",
+                  background: "white",
+                }}
                 variant="contained"
                 size="large"
               >

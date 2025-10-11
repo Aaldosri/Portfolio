@@ -4,11 +4,11 @@ import MarqueeCards from "../Components/MarqueeCards";
 import SectionTitle from "../Components/SectionTitle";
 import SkillsCards from "../Components/SkillsCards";
 
-const Skills = () => {
+export default function Skills({ ref }) {
   return (
-    <div id="skills" className="w-full overflow-hidden-web flex justify-center">
+    <div ref={ref} className="w-full overflow-hidden-web flex justify-center">
       <div className="w-full min-h-[800px] flex flex-col xl:w-[70%]">
-        <div dir="rtl" className="w-full">
+        <div dir="rtl" className="w-full overflow-hidden">
           <SectionTitle title="مهاراتي" subtitle="ما اجيده" />
         </div>
         <div className="xl:border-l-2 xl:border-r-2 xl:border-primary-400 h-full">
@@ -28,6 +28,4 @@ const Skills = () => {
       </div>
     </div>
   );
-};
-
-export default Skills;
+}
