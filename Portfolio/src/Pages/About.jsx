@@ -17,7 +17,7 @@ export default function About({ ref }) {
         <SectionTitle title="نبذة عني" subtitle="مقدمة" />
       </div>
 
-      <div className="flex justify-around p-6 noselect max-w-[1400px] mx-auto ">
+      <div className="flex flex-col xl:flex-row justify-around p-6 noselect max-w-[1400px] mx-auto">
         <motion.div
           className="w-full md:w-[130%] md:h-full flex items-center mt-10"
           initial={{ y: 50, opacity: 0 }}
@@ -34,7 +34,9 @@ export default function About({ ref }) {
                 stiffness: 100,
                 damping: 20,
               }}
-              className="text-grayscale-50  text-2xl p-6 text-right text-white flex flex-col gap-6"
+              className="text-grayscale-50 p-6 text-right text-white flex flex-col gap-6 
+             w-full max-w-[600px] ml-auto 
+             text-lg sm:text-xl md:text-2xl lg:text-[1.7rem] xl:text-[1.5rem] leading-relaxed"
             >
               <span className={`${darkMode ? "text-white" : "text-black"}`}>
                 {introduction.text[0]}

@@ -29,7 +29,10 @@ export default function App() {
         scrollToSection={scrollToSection}
         refs={{ aboutRef, projectsRef, skillsRef, contactRef }}
       />
-      <MainPage />
+      <MainPage
+        scrollToSection={scrollToSection}
+        refs={{ projectsRef, contactRef }}
+      />
       <About ref={aboutRef} />
       <Projects ref={projectsRef} />
       <Skills ref={skillsRef} />

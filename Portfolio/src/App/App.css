@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+html,
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #b71f1f; /* لون الخلفية عند النسخ */
+  color: #fff; /* لون النص */
+}
+
 body.dark {
   background-color: black;
 }

@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 
 import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
 
-export default function MainPage() {
-  const { darkMode, toggleDarkMode } = useDarkModeContext();
+export default function MainPage({ scrollToSection, refs }) {
+  const { darkMode } = useDarkModeContext();
 
   return (
     <>
@@ -16,7 +16,9 @@ export default function MainPage() {
         <div className="content-center">
           {/* العنوان الرئيسي يدخل من الأسفل */}
           <motion.h1
-            className={`text-7xl ${darkMode ? "text-white" : "text-black"}`}
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${
+              darkMode ? "text-white" : "text-black"
+            }`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -25,7 +27,7 @@ export default function MainPage() {
           </motion.h1>
 
           <motion.h3
-            className={`text-5xl m-10 ${
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl m-10 text-center ${
               darkMode ? "text-white" : "text-black"
             }`}
             initial={{ y: 50, opacity: 0 }}
@@ -43,10 +45,11 @@ export default function MainPage() {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <Button
+                onClick={() => scrollToSection(refs.contactRef)}
                 style={{
                   fontFamily: "TajawalRegular",
                   color: "white",
-                  backgroundColor: "rgba(128, 128, 128, 0.2)", // رمادي شفاف جدًا
+                  backgroundColor: darkMode ? "rgba(89, 89, 89, 0.2)" : "gray", // رمادي شفاف جدًا
                 }}
                 variant="contained"
                 size="large"
@@ -62,10 +65,11 @@ export default function MainPage() {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
             >
               <Button
+                onClick={() => scrollToSection(refs.projectsRef, 60)}
                 style={{
                   fontFamily: "TajawalRegular",
-                  color: "black",
-                  background: "white",
+                  color: darkMode ? "black" : "white",
+                  background: darkMode ? "white" : "black",
                 }}
                 variant="contained"
                 size="large"

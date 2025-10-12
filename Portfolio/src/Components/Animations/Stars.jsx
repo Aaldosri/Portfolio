@@ -45,7 +45,7 @@ export default function Stars(props) {
     speedFactor = 0.05,
     backgroundColor = "black",
     starColor = darkMode ? [255, 255, 255] : [0, 0, 0],
-    starCount = 5000,
+    starCount = 3000,
   } = props;
 
   useEffect(() => {
@@ -86,8 +86,7 @@ export default function Stars(props) {
     let stars = makeStars(starCount);
 
     const clear = () => {
-      c.fillStyle = backgroundColor;
-      c.fillRect(0, 0, canvas.width, canvas.height);
+      c.clearRect(0, 0, canvas.width, canvas.height);
     };
 
     const putPixel = (x, y, brightness) => {
@@ -174,7 +173,7 @@ export default function Stars(props) {
         zIndex: 10,
         opacity: 1,
         pointerEvents: "none",
-        mixBlendMode: "screen",
+        mixBlendMode: darkMode ? "screen" : "normal", // 👈 التغيير الذكي هنا
       }}
     />
   );

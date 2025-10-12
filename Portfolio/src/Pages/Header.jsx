@@ -42,7 +42,7 @@ export default function Header({ scrollToSection, refs }) {
             </li>
             <li className="relative cursor-pointer p-4 group">
               <span
-                onClick={() => scrollToSection(refs.projectsRef, 70)} // نزول أكثر
+                onClick={() => scrollToSection(refs.projectsRef, 60)} // نزول أكثر
                 className="text-3xl transition-colors duration-200 group-hover:text-[#b33939]"
               >
                 المشاريع
@@ -62,7 +62,11 @@ export default function Header({ scrollToSection, refs }) {
         </div>
 
         <div>
-          <h1 className={`${darkMode ? "text-white" : "text-black"} text-3xl`}>
+          <h1
+            className={`${
+              darkMode ? "text-white" : "text-black"
+            } text-3xl select-none`}
+          >
             عبدالله الدوسري
           </h1>
         </div>

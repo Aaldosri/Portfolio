@@ -45,7 +45,7 @@ export default function ContactForm() {
           style={{ fontFamily: "TajawalRegular" }}
           className="message text-5xl bg-primary-600 p-2 rounded-xl text-grayscale-200 text-center rounded-br-[0%] relative shadow-2xl"
         >
-          <Typewriter words={["عندك أفكار؟", "!خلينا نتعاون"]} loop={true} />
+          <Typewriter words={["عندك أفكار؟", "!خلنا نتعاون"]} loop={true} />
           &nbsp;
         </h2>
       </div>

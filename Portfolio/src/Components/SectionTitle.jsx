@@ -10,7 +10,7 @@ export default function SectionTitle(props) {
   return (
     <LazyMotion features={domAnimation} strict>
       <m.div
-        initial={{ x: 650 }}
+        initial={{ x: window.innerWidth < 640 ? 300 : 650 }} // على الجوال يتحرك بس 50px فقط
         whileInView={{ x: 0 }}
         transition={{ duration: 0.6, type: "spring" }}
         className="text-primary-600 p-6 noselect max-w-[1000px] mx-auto "
@@ -25,7 +25,7 @@ export default function SectionTitle(props) {
           {subtitle}
         </span>
         <h2
-          className={`tracking-wider text-7xl sm:text-8xl md:text-6xl ${
+          className={`tracking-wider text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${
             darkMode ? "text-white" : "text-black"
           }`}
         >

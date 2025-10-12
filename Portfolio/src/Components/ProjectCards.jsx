@@ -83,7 +83,8 @@ export default function ProjectCards() {
                 drag={canDrag ? "y" : false}
                 dragConstraints={{ top: 10, bottom: 10 }}
                 onDragEnd={() => moveToEnd(index)}
-                className="absolute w-full h-full bg-primary-400 origin-[top-center] list-none rounded-xl flex flex-col overflow-hidden"
+                className="absolute w-full h-full bg-primary-400 origin-[top-center] list-none rounded-xl flex flex-col overflow-hidden
+             max-sm:w-[90%] max-sm:h-[70%]"
               >
                 {/* الصورة */}
                 <div className="relative w-full h-full overflow-hidden rounded-xl group">
@@ -96,7 +97,11 @@ export default function ProjectCards() {
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex justify-center items-center">
                     {/* المربع المركزي */}
-                    <div className="bg-black/80 p-6 rounded-lg text-center space-y-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div
+                      className="bg-black/80 p-6 rounded-lg text-center space-y-4 z-10 
+                opacity-100 lg:opacity-0 group-hover:opacity-100 
+                transition-opacity duration-300"
+                    >
                       <h3 className="text-white text-xl font-semibold">
                         {project.name}
                       </h3>
@@ -115,7 +120,7 @@ export default function ProjectCards() {
                           rel="noopener noreferrer"
                           className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition"
                         >
-                          Visit Site
+                          عرض المشروع
                         </a>
                       </div>
                     </div>

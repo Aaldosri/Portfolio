@@ -17,13 +17,13 @@ export default function Contact({ ref }) {
         <div className="w-full overflow-hidden" dir="rtl">
           <SectionTitle title="للتواصل" subtitle="أرسل رسالتك" />
         </div>
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center items-center overflow-hidden">
           <LazyMotion features={domAnimation} strict>
             <m.div
               initial={{ x: 200 }}
               whileInView={{ x: 0 }}
               transition={{ duration: 0.6, type: "spring" }}
-              className="w-full sm:w-[90%] md:w-[80%] sm:h-[600px] rounded-xl border-4 border-primary-400 p-4 flex flex-col sm:flex-row gap-4"
+              className="w-full  sm:w-[90%] md:w-[80%] sm:h-[600px] rounded-xl border-4 border-primary-400 p-4 flex flex-col sm:flex-row gap-4"
             >
               <ContactServices />
               <ContactForm />
@@ -32,7 +32,7 @@ export default function Contact({ ref }) {
         </div>
         <GlobeComponent />
       </div>
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col ">
         <SocialLinks />
         <div className="bg-[#1a1a1a] flex justify-center pb-4 text-grayscale-400">
           <span>
