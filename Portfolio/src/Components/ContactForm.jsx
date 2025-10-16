@@ -8,26 +8,27 @@ import emailjs from "@emailjs/browser";
 export default function ContactForm() {
   const [isSent, setIsSent] = useState(false);
   const form = useRef();
-  const env = import.meta.env;
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        env.VITE_REACT_APP_EJS_SERVICE,
-        env.VITE_REACT_APP_EJS_TEMPLATE,
+        "service_4z9ymac",
+        "template_ir6z0xe",
         form.current,
-        env.VITE_REACT_APP_EJS_KEY
+        "3Doe_o0i-bohCcBFy"
       )
       .then(
-        (result) => {
-          document.getElementById("contact_form").reset();
+        () => {
+          form.current.reset();
           setIsSent(true);
+          alert("تم إرسال الرسالة بنجاح!");
         },
         (error) => {
-          console.error(error);
+          console.error("EmailJS Error:", error);
           setIsSent(false);
+          alert("حدث خطأ أثناء الإرسال.");
         }
       );
   };
@@ -66,7 +67,7 @@ export default function ContactForm() {
               placeholder="اكتب اسمك"
               id="firstname"
               type="text"
-              name="from_name"
+              name="name"
               required
             />
           </div>
@@ -77,14 +78,14 @@ export default function ContactForm() {
               placeholder="اكتب ايميلك"
               id="email"
               type="email"
-              name="from_email"
+              name="email"
               required
             />
           </div>
           <div className="w-full flex flex-col">
             <label>الرسالة</label>
             <textarea
-              className="p-[0.5em] rounded-xl text-black bg-white"
+              className="p-[0.5em] rounded-xl text-black bg-white resize-none"
               placeholder="اكتب رسالتك ..."
               name="message"
               required

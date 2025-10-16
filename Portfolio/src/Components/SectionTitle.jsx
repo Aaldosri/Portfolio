@@ -4,13 +4,13 @@ import React from "react";
 import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
 
 export default function SectionTitle(props) {
-  const { darkMode, toggleDarkMode } = useDarkModeContext();
+  const { darkMode } = useDarkModeContext();
 
   const { title, subtitle } = props;
   return (
     <LazyMotion features={domAnimation} strict>
       <m.div
-        initial={{ x: window.innerWidth < 640 ? 300 : 650 }} // على الجوال يتحرك بس 50px فقط
+        initial={{ x: window.innerWidth < 640 ? 300 : 650 }}
         whileInView={{ x: 0 }}
         transition={{ duration: 0.6, type: "spring" }}
         className="text-primary-600 p-6 noselect max-w-[1000px] mx-auto "

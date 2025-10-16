@@ -67,14 +67,16 @@ export default function ContactServices() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
         >
-          {/* <div className="w-full h-[50px] text-grayscale-100 flex items-center gap-4">
+          <div className="w-full h-[50px] text-grayscale-100 flex items-center gap-4">
             <FontAwesomeIcon
               style={{ width: "50px", height: "50px" }}
               className="w-[50px] h-full text-primary-400"
               icon={icons.faBagShopping}
             />
-            <span>تفاعل سلس وتجربة مستخدم مميزة</span>
-          </div> */}
+            <span className={`${darkMode ? "text-white" : "text-black"}`}>
+              تفاعل سلس وتجربة مستخدم مميزة
+            </span>
+          </div>
         </m.div>
       </LazyMotion>
     </div>

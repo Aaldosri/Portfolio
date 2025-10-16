@@ -81,11 +81,6 @@ export default function MainPage({ scrollToSection, refs }) {
         </div>
         <Particles />
       </div>
-      {/* Waves */}
-      {/* <div class="blob"></div> */}
-      {/* <div class="wave"></div> */}
-      {/* ==== Waves ==== */}
-      {/* COMPONENT IN THE MAIN PAGE */}
       <Stars />
     </>
   );

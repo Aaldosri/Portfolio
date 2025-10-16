@@ -46,6 +46,7 @@ import {
   faGithub,
   faYoutube,
   faTiktok,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
 const introduction = {
@@ -68,6 +69,7 @@ const icons = {
   faGithub,
   faYoutube,
   faTiktok,
+  faLinkedin,
 };
 
 const skills = [
@@ -86,8 +88,8 @@ const skills = [
       "استخدمها لتنسيق الصفحات وجعل التصميم متناسق وجذاب والتحكم في الألوان والمسافات بشكل عملي",
   },
   {
-    id: "javascript",
-    title: "جافاسكربت",
+    id: "Javascript",
+    title: "Javascript",
     icon: jsIcon,
     description:
       "استخدمها لإضافة تفاعلات ديناميكية وتحسين تجربة المستخدم من خلال التفاعل السلس على الموقع",

@@ -8,7 +8,7 @@ export default function Skills({ ref }) {
   return (
     <div ref={ref} className="w-full overflow-hidden-web flex justify-center">
       <div className="w-full min-h-[800px] flex flex-col xl:w-[70%]">
-        <div dir="rtl" className="w-full overflow-hidden">
+        <div dir="rtl" className="w-full h-[20%] overflow-hidden">
           <SectionTitle title="مهاراتي" subtitle="ما اجيده" />
         </div>
         <div className="xl:border-l-2 xl:border-r-2 xl:border-primary-400 h-full">

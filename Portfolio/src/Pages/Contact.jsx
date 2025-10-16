@@ -34,10 +34,8 @@ export default function Contact({ ref }) {
       </div>
       <div className="w-full flex flex-col ">
         <SocialLinks />
-        <div className="bg-[#1a1a1a] flex justify-center pb-4 text-grayscale-400">
-          <span>
-            صنع بالكثير من الحنكة <em>عبدالله الدوسري</em> | 2025
-          </span>
+        <div className="bg-[#1a1a1a] flex justify-center pb-4 text-grayscale-400 select-none">
+          <span>@ Aaldosri | جميع الحقوق محفوظة 2025</span>
         </div>
       </div>
     </div>

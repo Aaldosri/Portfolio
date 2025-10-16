@@ -1,7 +1,4 @@
 import React from "react";
-import { Users, Code2, Smartphone } from "lucide-react"; // أيقونات
-import { Monitor, Layers } from "lucide-react";
-import { Lightbulb, Zap, ShieldCheck, Shield } from "lucide-react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import { FeatuesData } from "../Constants/Constants";

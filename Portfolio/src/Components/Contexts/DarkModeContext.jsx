@@ -1,10 +1,8 @@
 import React from "react";
 import { createContext, useContext, useState, useEffect } from "react";
 
-// إنشاء السياق
 const DarkModeContext = createContext();
 
-// المزوّد (Provider)
 export function DarkModeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(
     () =>
@@ -13,7 +11,6 @@ export function DarkModeProvider({ children }) {
         window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
 
-  // حفظ الثيم وتغيير الخلفية على body
   useEffect(() => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
     document.body.style.backgroundColor = darkMode ? "#000000" : "#e9ecef";
@@ -28,7 +25,6 @@ export function DarkModeProvider({ children }) {
   );
 }
 
-// هوك للوصول للسياق
 export function useDarkModeContext() {
   return useContext(DarkModeContext);
 }

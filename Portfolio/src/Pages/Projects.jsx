@@ -17,12 +17,12 @@ export default function Projects({ ref }) {
             <SectionTitle title="المشاريع" subtitle="اعمال انتهيت منها" />
           </div>
           <div className="w-full h-[80%] z-10 flex justify-center">
-            <div className="w-full xl:w-[60%] mt-10 h-full overflow-hidden">
+            <div className="w-full xl:w-[60%] pb-10 pt-10 mt-10 h-full overflow-hidden">
               <ProjectCards />
             </div>
             <div
               className="absolute top-0 overflow-visible transform scale-x-[-1]"
-              style={{ right: "850px", top: "-150px" }}
+              style={{ right: "750px", top: "-150px" }}
             >
               <Astronaut />
             </div>

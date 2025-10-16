@@ -17,7 +17,7 @@ export default function Particles() {
       id: 1,
       emoji: (
         <ChevronsLeftRight size={60} color="gray" style={{ opacity: 0.2 }} />
-      ), // تكبير بالحجم (بالبكسل)
+      ),
       top: "40%",
       left: "22%",
       dx: 5,
@@ -80,7 +80,7 @@ export default function Particles() {
           animate={{
             x: [0, el.dx, 0],
             y: [0, el.dy, 0],
-            rotate: el.rotate, // يميل يمين ويسار
+            rotate: el.rotate,
           }}
           transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
           className="emoji"

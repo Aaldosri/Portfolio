@@ -9,9 +9,12 @@ import {
   domAnimation,
 } from "framer-motion";
 import { astroPath } from "../Constants/astroPath";
-// import BgQuote from "./elements/BgQuote";
 
-const Astronaut = () => {
+import { useDarkModeContext } from "../Components/Contexts/DarkModeContext";
+
+export default function Astronaut() {
+  const { darkMode } = useDarkModeContext();
+
   const [isInView, setIsInView] = useState(false);
 
   const ref = useRef(null);
@@ -29,7 +32,6 @@ const Astronaut = () => {
   return (
     <div ref={ref} className="w-full h-full relative ">
       <div className="w-full h-full astro-path ">
-        {/* <BgQuote text="this is not me" /> */}
         <svg
           className="w-[860px] h-[750px] rotate-[-35deg]"
           xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +47,7 @@ const Astronaut = () => {
               animate={{ pathLength: isInView ? 0.5 : 0, x: 0 }}
               transition={{ duration: 4, type: "spring" }}
               fill="none"
-              stroke="#ff2929"
+              stroke={darkMode ? "#ff2929" : "black"}
               strokeWidth={0.5}
               stroke-linecap="square"
               stroke-linejoin="miter"
@@ -57,6 +59,4 @@ const Astronaut = () => {
       </div>
     </div>
   );
-};
-
-export default Astronaut;
+}
