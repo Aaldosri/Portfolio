@@ -7,7 +7,7 @@ This collection showcases my best front-end projects focused on building modern,
 
 ## 🚀 Live Demo
 
-[View my portfolio live](https://jovial-jalebi-b41968.netlify.app/)
+[View my portfolio live](https://abdullah-aldosari.netlify.app/)
 
 ---
 
