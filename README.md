@@ -1,4 +1,4 @@
-# 💼 Portfolio
+# 💼 My Portfolio
 
 Welcome to my portfolio!  
 This collection showcases my best front-end projects focused on building modern, clean, and responsive web applications using React.js and related technologies.
