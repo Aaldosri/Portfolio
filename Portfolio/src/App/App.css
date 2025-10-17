@@ -26,17 +26,6 @@ button {
 }
 
 @theme {
-  /* --color-primary-50: #ffecec;
-  --color-primary-100: #ffd1d1;
-  --color-primary-200: #ffa7a7;
-  --color-primary-300: #ff6d6d;
-  --color-primary-400: #ff2929;
-  --color-primary-500: #e60000;
-  --color-primary-600: #b40000;
-  --color-primary-700: #940000;
-  --color-primary-800: #720000;
-  --color-primary-900: #500000;
-  --color-primary-950: #2c0000; */
   --color-primary-50: #f9e6e6;
   --color-primary-100: #f2c7c7;
   --color-primary-200: #e99e9e;
@@ -64,17 +53,17 @@ button {
 
 @font-face {
   font-family: TajawalMedium;
-  src: url(fonts/Tajawal-Regular.ttf);
+  src: url(/fonts/Tajawal-Regular.ttf);
 }
 
 @font-face {
   font-family: TajawalRegular;
-  src: url(fonts/Tajawal-Medium.ttf);
+  src: url(/fonts/Tajawal-Medium.ttf);
 }
 
 @font-face {
   font-family: TajawalBold;
-  src: url(fonts/Tajawal-Bold.ttf);
+  src: url(/fonts/Tajawal-Bold.ttf);
 }
 
 body {

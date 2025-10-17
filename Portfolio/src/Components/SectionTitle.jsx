@@ -27,18 +27,9 @@ export default function SectionTitle(props) {
         <h2
           className={`tracking-wider text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${
             darkMode ? "text-white" : "text-black"
-          }`}
+          } font-Tajawal`}
         >
-          {title.split("").map((char, index) => {
-            if (char === " ") {
-              return " ";
-            }
-            return (
-              <span key={index} className="bounce">
-                {char}
-              </span>
-            );
-          })}
+          {title}
         </h2>
       </m.div>
     </LazyMotion>
